@@ -1,21 +1,21 @@
 const modules = [
   {
-    title: "Plan nabożeństwa",
+    title: "Service run-of-show",
     description:
-      "Przejrzysta kolejność elementów: powitanie, uwielbienie, kazanie, pieśni, ogłoszenia. Liderzy widzą, co jest teraz i co następne.",
-    status: "W przygotowaniu",
+      "A clear order of elements: welcome, worship, message, songs, announcements. Leaders see what is live now and what comes next.",
+    status: "In progress",
   },
   {
-    title: "Odprawa i synchronizacja",
+    title: "Team sync",
     description:
-      "Jedna wspólna „tablica” dla zespołu prowadzącego, żeby nic nie umknęło w trakcie spotkania.",
-    status: "W przygotowaniu",
+      "One shared board for the service team so nothing slips during the gathering.",
+    status: "In progress",
   },
   {
-    title: "Moduły na przyszłość",
+    title: "Future modules",
     description:
-      "Teksty pieśni, slajdy, tłumaczenia fragmentów biblijnych, ankiety i więcej pod marką openchurch.dev.",
-    status: "Wizja",
+      "Song lyrics, slides, Bible passage translations, polls, and more under the openchurch.dev brand.",
+    status: "Vision",
   },
 ];
 
@@ -55,30 +55,29 @@ export default function Home() {
           />
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 inline-flex rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
-              Open source · darmowe dla kościołów
+              Open source · free for churches
             </p>
             <h1
               className="font-[family-name:var(--font-display)] text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
             >
-              Porządek w nabożeństwie, bez chaosu w zespole
+              Clarity for your service, calm for your team
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl">
-              Budujemy narzędzia dla lokalnych wspólnot: na start plan i
-              podgląd dla liderów, potem moduły web i mobile pod jednym
-              brandem. Projekt utrzymujemy z darowizn, bez opłat za użycie
-              kościelne.
+              Tools for local congregations: starting with a run-of-show and a
+              leader view, then web and mobile modules under one brand. Sustained
+              by donations, with no fees for church use.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <span
                 className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-6 text-sm font-semibold text-white"
               >
-                Wkrótce pierwsza wersja
+                First release coming soon
               </span>
               <a
                 href="mailto:hello@openchurch.dev"
                 className="inline-flex h-11 items-center justify-center rounded-full border border-border px-6 text-sm font-medium text-foreground transition hover:border-accent"
               >
-              Napisz do nas
+                Get in touch
               </a>
             </div>
           </div>
@@ -89,12 +88,12 @@ export default function Home() {
             <h2
               className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight sm:text-3xl"
             >
-              Od czego zaczynamy
+              Where we start
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
-              Punkt wyjścia: konta dla liderów i przejrzysty przebieg
-              nabożeństwa. Reszta modułów dojdzie wraz z potrzebami
-              wspólnot.
+              Leader accounts and a transparent service flow. Additional modules
+              will follow as communities need them. The product will support
+              multiple languages; this site is English-only for now.
             </p>
             <ul className="mt-10 grid gap-6 sm:grid-cols-3">
               {modules.map((item) => (
@@ -122,13 +121,12 @@ export default function Home() {
             <h2
               className="font-[family-name:var(--font-display)] text-2xl font-semibold"
             >
-              Dla kościoła, nie dla zysku
+              For the church, not for profit
             </h2>
             <p className="mt-4 text-muted leading-relaxed">
-              Kod na licencji open source. Korzystanie dla wspólnot
-              kościelnych bez abonamentu. Jeśli projekt Ci pomaga, w
-              przyszłości będzie można wesprzeć go darowizną na rozwój
-              infrastruktury i nowych modułów.
+              Open source code. Free for church communities to use. If OpenChurch
+              helps you, you will be able to support hosting and new modules with
+              voluntary donations later on.
             </p>
           </div>
         </section>
@@ -138,7 +136,6 @@ export default function Home() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
           <p>© 2026 OpenChurch</p>
           <p>
-            Landing na{" "}
             <a href="https://openchurch.dev" className="text-accent">
               openchurch.dev
             </a>

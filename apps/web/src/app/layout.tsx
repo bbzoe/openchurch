@@ -13,9 +13,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "OpenChurch | Narzędzia open source dla lokalnych kościołów",
+  title: "OpenChurch | Open source tools for local churches",
   description:
-    "Darmowe, otwarte narzędzia dla kościołów: plan nabożeństwa, odprawa dla liderów i moduły wspierające wspólnotę. Utrzymywane z darowizn.",
+    "Free, open tools for churches: service run-of-show, leader sync, and community modules. Sustained by donations.",
   metadataBase: new URL("https://openchurch.dev"),
   openGraph: {
     title: "OpenChurch",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
       "Open source tools for local churches. Free to use, sustained by donations.",
     url: "https://openchurch.dev",
     siteName: "OpenChurch",
-    locale: "pl_PL",
+    locale: "en_US",
     type: "website",
   },
 };
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="pl"
+      lang="en"
       className={`${dmSans.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

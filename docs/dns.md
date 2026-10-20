@@ -2,16 +2,21 @@
 
 Domena jest zarejestrowana w **GoDaddy**. Strefa DNS jest w **Vercel** (konto: Bartek Bilicki's projects).
 
-## Co musisz zrobić w GoDaddy (jednorazowo)
+## Status (2026-10-20)
 
-1. Zaloguj się na [godaddy.com](https://www.godaddy.com) → **Moje produkty** → **openchurch.dev** → **Zarządzaj DNS** / **Nameservers**.
-2. Wybierz **Zmień nameserwery** (Custom nameservers).
-3. Ustaw dokładnie:
-   - `ns1.vercel-dns.com`
-   - `ns2.vercel-dns.com`
-4. Zapisz. Propagacja zwykle trwa od kilku minut do 48 h.
+Nameserwery ustawione w GoDaddy (CLI `gddy`) na:
 
-Po propagacji Vercel ustawi rekordy dla apex (`openchurch.dev`) i możesz dodać `www` w panelu Vercel, jeśli potrzebujesz.
+- `ns1.vercel-dns.com`
+- `ns2.vercel-dns.com`
+
+Vercel: strefa DNS aktywna, projekt **openchurch** ma `openchurch.dev` i `www` → redirect na apex.
+
+Po zmianie NS certyfikat HTTPS na edge może dojść z opóźnieniem (zwykle minuty, czasem do ~1 h). Lokalny resolver macOS czasem trzyma stare rekordy GoDaddy; wtedy pomaga odświeżenie cache DNS lub test przez `dig @8.8.8.8`.
+
+## Ręczna zmiana w GoDaddy (gdyby trzeba było powtórzyć)
+
+1. [godaddy.com](https://www.godaddy.com) → **openchurch.dev** → **Nameservers** → Custom.
+2. `ns1.vercel-dns.com` i `ns2.vercel-dns.com`.
 
 ## Weryfikacja
 
