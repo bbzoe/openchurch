@@ -1,0 +1,10 @@
+{
+  "name": "openchurch",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @openchurch/web dev",
+    "build": "pnpm --filter @openchurch/web build",
+    "lint": "pnpm --filter @openchurch/web lint"
+  },
+  "packageManager": "pnpm@10.12.1"
+}
