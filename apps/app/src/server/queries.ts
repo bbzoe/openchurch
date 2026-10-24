@@ -28,7 +28,7 @@ export async function listMyChurches(userId: string) {
     .from(membership)
     .innerJoin(organization, eq(organization.id, membership.organizationId))
     .where(eq(membership.userId, userId))
-    .orderBy(asc(organization.name));
+    .orderBy(asc(organization.createdAt));
 }
 
 export async function getMembership(userId: string, organizationId: string) {
