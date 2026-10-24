@@ -19,7 +19,14 @@ export default async function ChurchLayout({
   if (!current) redirect("/churches");
 
   return (
-    <AppSidebar orgId={orgId} churchName={current.name} city={current.city} churches={churches}>
+    <AppSidebar
+      orgId={orgId}
+      churchName={current.name}
+      city={current.city}
+      churches={churches}
+      userName={user.name}
+      userImage={user.image}
+    >
       {children}
     </AppSidebar>
   );

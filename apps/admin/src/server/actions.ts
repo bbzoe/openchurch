@@ -41,17 +41,31 @@ export async function createUser(formData: FormData) {
 }
 
 export async function updateUser(userId: string, formData: FormData) {
-  const operator = await requireOperator();
+  await requireOperator();
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const password = String(formData.get("password") ?? "");
+  const image = String(formData.get("image") ?? "");
   if (!name || !email) back(`/users/${userId}`, "Name and email are required.");
+  if (image && (!image.startsWith("data:image/jpeg;base64,") || image.length > 180000)) {
+    back(`/users/${userId}`, "Use a smaller photo.");
+  }
   const taken = await db.select({ id: user.id }).from(user).where(eq(user.email, email)).limit(1);
   if (taken[0] && taken[0].id !== userId) back(`/users/${userId}`, "That email is already in use.");
-  await db.update(user).set({ name, email, updatedAt: new Date() }).where(eq(user.id, userId));
-  if (password) {
-    if (password.length < 8) back(`/users/${userId}`, "A new password needs at least 8 characters.");
-    const hash = await hashPassword(password);
+  await db
+    .update(user)
+    .set({ name, email, ...(image ? { image } : {}), updatedAt: new Date() })
+    .where(eq(user.id, userId));
+  revalidatePath("/users");
+  revalidatePath(`/users/${userId}`);
+}
+
+export async function setUserPassword(userId: string, formData: FormData) {
+  await requireOperator();
+  const password = String(formData.get("password") ?? "");
+  const confirm = String(formData.get("confirm") ?? "");
+  if (password.length < 8) back(`/users/${userId}`, "A new password needs at least 8 characters.");
+  if (password !== confirm) back(`/users/${userId}`, "Those passwords do not match.");
+  const hash = await hashPassword(password);
     const existing = await db
       .select({ id: account.id })
       .from(account)
@@ -68,9 +82,6 @@ export async function updateUser(userId: string, formData: FormData) {
         password: hash,
       });
     }
-  }
-  if (operator.id === userId) revalidatePath("/users");
-  revalidatePath("/users");
   revalidatePath(`/users/${userId}`);
 }
 

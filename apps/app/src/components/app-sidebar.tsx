@@ -19,12 +19,16 @@ export function AppSidebar({
   churchName,
   city,
   churches,
+  userName,
+  userImage,
   children,
 }: {
   orgId: string;
   churchName: string;
   city: string;
   churches: Church[];
+  userName: string;
+  userImage?: string | null;
   children: ReactNode;
 }) {
   const path = usePathname();
@@ -51,8 +55,17 @@ export function AppSidebar({
           {item(home, "Events", path === home || path.includes("/events/"))}
           {item(`${home}/people`, "People", path.endsWith("/people") || path.endsWith("/setup"))}
           {item(`${home}/songs`, "Songs", path.endsWith("/songs"))}
+          {item(`${home}/account`, "Profile", path.endsWith("/account"))}
         </nav>
         <div className="mt-auto border-t border-line pt-3">
+          <Link href={`${home}/account`} className="mb-2 flex items-center gap-2 rounded-xl px-2 py-2 hover:bg-white/80">
+            {userImage ? (
+              <Image src={userImage} alt="" width={28} height={28} unoptimized className="size-7 rounded-full object-cover" />
+            ) : (
+              <span className="grid size-7 place-items-center rounded-full bg-white text-xs font-semibold">{userName.slice(0, 1)}</span>
+            )}
+            <span className="truncate text-sm font-medium">{userName}</span>
+          </Link>
           <details className="group relative">
             <summary className="cursor-pointer list-none rounded-xl px-2 py-2 hover:bg-white/80 [&::-webkit-details-marker]:hidden">
               <span className="block truncate text-sm font-semibold">{churchName}</span>
