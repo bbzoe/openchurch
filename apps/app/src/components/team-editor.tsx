@@ -1,4 +1,5 @@
 import { addPeopleFromList, addPerson, addRole, renameRole, updatePersonRole } from "@/server/actions";
+import { RoleSelect } from "@/components/role-select";
 import { Button } from "@/components/ui/button";
 
 type Role = { id: string; name: string };
@@ -22,48 +23,11 @@ export function TeamEditor({
       <section>
         <h1 className="text-3xl font-bold tracking-tight">{mode === "setup" ? "Add your team" : "People"}</h1>
         <p className="mt-2 text-sm text-body">
-          Paste a list of emails, or add one person at a time. Pastor, Deacon, and Worship leader are already here. You can change a role later.
+          Paste emails first. Change a person's role in the list. It saves as soon as you pick it.
         </p>
         {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
-        {people.length === 0 ? (
-          <p className="mt-6 rounded-[22px] border border-line bg-white p-6 text-sm text-body">No one yet. Add the first person.</p>
-        ) : (
-          <ul className="mt-8 divide-y divide-line border-y border-line">
-            {people.map((item) => (
-              <li key={item.id} className="py-4">
-                <p className="font-semibold">
-                  {item.firstName} {item.lastName}
-                </p>
-                <p className="text-sm text-body">{item.email}</p>
-                <form action={updatePersonRole.bind(null, orgId, item.id)} className="mt-3 flex gap-2">
-                  <select name="roleId" defaultValue={item.roleId} className="h-10 flex-1 rounded-xl border border-line bg-white px-3 text-sm">
-                    {roles.map((role) => (
-                      <option key={role.id} value={role.id}>
-                        {role.name}
-                      </option>
-                    ))}
-                  </select>
-                  <Button variant="outline" className="h-10 rounded-full bg-white px-3">
-                    Save role
-                  </Button>
-                </form>
-              </li>
-            ))}
-          </ul>
-        )}
-        {mode === "setup" ? (
-          <div className="mt-6">
-            {people.length === 0 ? (
-              <p className="text-sm text-body">Add at least one person to open the app.</p>
-            ) : (
-              <a href={`/churches/${orgId}`} className="inline-flex h-11 items-center rounded-full bg-action px-5 text-sm font-semibold text-primary-foreground">
-                Continue
-              </a>
-            )}
-          </div>
-        ) : null}
       </section>
-      <div className="mt-10 grid gap-8">
+      <div className="mt-8 grid gap-8">
         <form action={addPeopleFromList.bind(null, orgId)} className="grid gap-3">
           <h2 className="text-lg font-semibold">Add a list of emails</h2>
           <p className="text-sm text-body">One address per line. Everyone in the list gets the role below. You can change a role after.</p>
@@ -90,6 +54,24 @@ export function TeamEditor({
           </label>
           <Button className="h-11 w-fit rounded-full px-5 font-semibold">Add emails</Button>
         </form>
+        {people.length === 0 ? (
+          <p className="text-sm text-body">No one yet.</p>
+        ) : (
+          <ul className="divide-y divide-line border-y border-line">
+            {people.map((item) => (
+              <li key={item.id} className="py-4">
+                <p className="font-semibold">{[item.firstName, item.lastName].filter(Boolean).join(" ")}</p>
+                <p className="text-sm text-body">{item.email}</p>
+                <RoleSelect action={updatePersonRole.bind(null, orgId, item.id)} roleId={item.roleId} roles={roles} />
+              </li>
+            ))}
+          </ul>
+        )}
+        {mode === "setup" && people.length > 0 ? (
+          <a href={`/churches/${orgId}`} className="inline-flex h-11 w-fit items-center rounded-full bg-action px-5 text-sm font-semibold text-primary-foreground">
+            Continue
+          </a>
+        ) : null}
         <details>
           <summary className="cursor-pointer text-sm font-semibold">Add one person</summary>
           <form action={addPerson.bind(null, orgId)} className="mt-4 grid gap-3">

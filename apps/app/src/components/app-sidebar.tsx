@@ -58,7 +58,7 @@ export function AppSidebar({
               <span className="block truncate text-sm font-semibold">{churchName}</span>
               <span className="block truncate text-xs text-body">{city}</span>
             </summary>
-            <div className="absolute bottom-full left-0 z-20 mb-2 w-full min-w-56 rounded-2xl border border-line bg-white p-2 shadow-lg">
+            <div className="absolute top-full right-0 left-0 z-20 mt-2 w-full min-w-56 rounded-2xl border border-line bg-white p-2 shadow-lg md:top-auto md:bottom-full md:mt-0 md:mb-2">
               {churches.map((church) => (
                 <Link
                   key={church.organizationId}
