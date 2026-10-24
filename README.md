@@ -9,10 +9,21 @@ Open source tools for local churches: service run-of-show for leaders, then modu
 
 | Path | Purpose |
 |------|---------|
-| `apps/web` | Marketing landing and future web app (Next.js, port **3488** locally) |
+| `apps/web` | Marketing landing (Next.js, port **3488** locally) |
+| `apps/app` | Church app: account, plan, live view (Next.js, port **3492** locally) |
 | `apps/design` | Brand manual in Storybook (port **3489** locally, `design.openchurch.dev`) |
+| `packages/db` | Postgres schema (Drizzle) shared by the app |
 
-More apps and shared packages will live under `apps/` and `packages/` as the project grows.
+## App
+
+```bash
+docker compose up -d
+cp .env.example apps/app/.env.local
+pnpm db:push
+pnpm dev:app
+```
+
+Open [http://localhost:3492](http://localhost:3492). Set `BETTER_AUTH_SECRET` in `apps/app/.env.local` before the first run.
 
 ## Development
 

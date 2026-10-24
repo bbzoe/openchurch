@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: openchurch
+      POSTGRES_PASSWORD: openchurch
+      POSTGRES_DB: openchurch
+    volumes:
+      - openchurch_pg:/var/lib/postgresql/data
+
+volumes:
+  openchurch_pg:
