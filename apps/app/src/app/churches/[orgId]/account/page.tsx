@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { db, user } from "@openchurch/db";
 import { AvatarField } from "@/components/avatar-field";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { getSessionUser } from "@/lib/session";
 import { changePassword, updateProfile } from "@/server/account";
 
@@ -31,11 +32,11 @@ export default async function AccountPage({
         <AvatarField current={person.image} />
         <label className="grid gap-1 text-sm font-medium">
           Name
-          <input name="name" required defaultValue={person.name} className="h-11 rounded-xl border border-line px-3" />
+          <Input name="name" required defaultValue={person.name} className="h-11" />
         </label>
         <label className="grid gap-1 text-sm font-medium">
           Email
-          <input name="email" type="email" required defaultValue={person.email} className="h-11 rounded-xl border border-line px-3" />
+          <Input name="email" type="email" required defaultValue={person.email} className="h-11" />
         </label>
         <Button className="h-11 w-fit rounded-full px-5 font-semibold">Save profile</Button>
       </form>
@@ -43,15 +44,15 @@ export default async function AccountPage({
         <h2 className="text-lg font-semibold">Change password</h2>
         <label className="grid gap-1 text-sm font-medium">
           Current password
-          <input name="current" type="password" required autoComplete="current-password" className="h-11 rounded-xl border border-line px-3" />
+          <Input name="current" type="password" required autoComplete="current-password" className="h-11" />
         </label>
         <label className="grid gap-1 text-sm font-medium">
           New password
-          <input name="next" type="password" required minLength={8} autoComplete="new-password" className="h-11 rounded-xl border border-line px-3" />
+          <Input name="next" type="password" required minLength={8} autoComplete="new-password" className="h-11" />
         </label>
         <label className="grid gap-1 text-sm font-medium">
           Confirm new password
-          <input name="confirm" type="password" required minLength={8} autoComplete="new-password" className="h-11 rounded-xl border border-line px-3" />
+          <Input name="confirm" type="password" required minLength={8} autoComplete="new-password" className="h-11" />
         </label>
         <Button className="h-11 w-fit rounded-full px-5 font-semibold">Save password</Button>
       </form>

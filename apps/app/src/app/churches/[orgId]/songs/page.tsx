@@ -1,5 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { getSessionUser } from "@/lib/session";
 import { hasCapability } from "@/server/access";
 import { createSong } from "@/server/actions";
@@ -49,23 +51,23 @@ export default async function SongsPage({
             <h2 className="text-lg font-semibold">Add a song</h2>
             <label className="grid gap-1 text-sm font-medium">
               Title
-              <input name="title" required className="h-11 rounded-xl border border-line px-3" />
+              <Input name="title" required className="h-11" />
             </label>
             <label className="grid gap-1 text-sm font-medium">
               Arrangement
-              <input name="arrangement" placeholder="Default" className="h-11 rounded-xl border border-line px-3" />
+              <Input name="arrangement" placeholder="Default" className="h-11" />
             </label>
             <label className="grid gap-1 text-sm font-medium">
               Key
-              <input name="key" placeholder="G" className="h-11 rounded-xl border border-line px-3" />
+              <Input name="key" placeholder="G" className="h-11" />
             </label>
             <label className="grid gap-1 text-sm font-medium">
               Lyrics
-              <textarea name="lyrics" rows={5} className="rounded-xl border border-line px-3 py-2" />
+              <Textarea name="lyrics" rows={5} />
             </label>
             <label className="grid gap-1 text-sm font-medium">
               Chords
-              <textarea name="chords" rows={4} className="rounded-xl border border-line px-3 py-2 font-mono text-sm" />
+              <Textarea name="chords" rows={4} className="font-mono" />
             </label>
             <Button className="h-11 w-fit rounded-full px-5 font-semibold">Save song</Button>
           </form>

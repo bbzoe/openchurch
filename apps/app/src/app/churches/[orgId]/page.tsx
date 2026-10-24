@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { getSessionUser } from "@/lib/session";
 import { canReadPlan, hasCapability } from "@/server/access";
 import { createEvent } from "@/server/actions";
@@ -34,11 +35,11 @@ export default async function ChurchHome({
         <form action={createEvent.bind(null, orgId)} className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-end">
           <label className="grid flex-1 gap-1 text-sm font-medium">
             Title
-            <input name="title" required placeholder="Sunday service" className="h-11 rounded-xl border border-line px-3" />
+            <Input name="title" required placeholder="Sunday service" className="h-11" />
           </label>
           <label className="grid gap-1 text-sm font-medium">
             Starts
-            <input name="startsAt" type="datetime-local" required className="h-11 rounded-xl border border-line px-3" />
+            <Input name="startsAt" type="datetime-local" required className="h-11" />
           </label>
           <input type="hidden" name="kind" value="service" />
           <Button className="h-11 rounded-full px-5 font-semibold">Create</Button>

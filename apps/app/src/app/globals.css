@@ -26,6 +26,8 @@
   --input: var(--line);
   --ring: var(--action);
   --destructive: #b42318;
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
   --radius: 0.875rem;
 }
 
@@ -46,6 +48,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-destructive: var(--destructive);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-forest: var(--forest);
   --color-action: var(--action);
   --color-leaf: var(--leaf);

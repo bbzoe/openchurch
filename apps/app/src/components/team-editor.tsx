@@ -1,6 +1,8 @@
 import { addPeopleFromList, addPerson, addRole, renameRole, updatePersonRole } from "@/server/actions";
 import { RoleSelect } from "@/components/role-select";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 type Role = { id: string; name: string };
 type Person = { id: string; firstName: string; lastName: string; email: string; roleId: string; roleName: string };
@@ -23,7 +25,7 @@ export function TeamEditor({
       <section>
         <h1 className="text-3xl font-bold tracking-tight">{mode === "setup" ? "Add your team" : "People"}</h1>
         <p className="mt-2 text-sm text-body">
-          Paste emails first. Change a person's role in the list. It saves as soon as you pick it.
+          Paste emails first. Change a role in the list. It saves as soon as you pick it.
         </p>
         {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
       </section>
@@ -34,17 +36,11 @@ export function TeamEditor({
           <input type="hidden" name="next" value={mode} />
           <label className="grid gap-1 text-sm font-medium">
             Emails
-            <textarea
-              name="emails"
-              required
-              rows={8}
-              placeholder={"anna@church.org\npiotr@church.org"}
-              className="rounded-xl border border-line px-3 py-2"
-            />
+            <Textarea name="emails" required rows={6} placeholder={"anna@church.org\npiotr@church.org"} />
           </label>
           <label className="grid gap-1 text-sm font-medium">
             Role for this list
-            <select name="roleId" className="h-11 rounded-xl border border-line bg-white px-3">
+            <select name="roleId" className="h-11 w-full rounded-lg border border-input bg-white px-3 text-sm">
               {roles.map((role) => (
                 <option key={role.id} value={role.id}>
                   {role.name}
@@ -78,19 +74,19 @@ export function TeamEditor({
           <input type="hidden" name="next" value={mode} />
           <label className="grid gap-1 text-sm font-medium">
             First name
-            <input name="firstName" required className="h-11 rounded-xl border border-line px-3" />
+            <Input name="firstName" required className="h-11" />
           </label>
           <label className="grid gap-1 text-sm font-medium">
             Last name
-            <input name="lastName" required className="h-11 rounded-xl border border-line px-3" />
+            <Input name="lastName" required className="h-11" />
           </label>
           <label className="grid gap-1 text-sm font-medium">
             Email
-            <input name="email" type="email" required className="h-11 rounded-xl border border-line px-3" />
+            <Input name="email" type="email" required className="h-11" />
           </label>
           <label className="grid gap-1 text-sm font-medium">
             Role
-            <select name="roleId" className="h-11 rounded-xl border border-line bg-white px-3">
+            <select name="roleId" className="h-11 w-full rounded-lg border border-input bg-white px-3 text-sm">
               {roles.map((role) => (
                 <option key={role.id} value={role.id}>
                   {role.name}
@@ -108,7 +104,7 @@ export function TeamEditor({
             {roles.map((role) => (
               <li key={role.id}>
                 <form action={renameRole.bind(null, orgId, role.id)} className="flex gap-2">
-                  <input name="name" defaultValue={role.name} className="h-10 flex-1 rounded-xl border border-line px-3 text-sm" />
+                  <Input name="name" defaultValue={role.name} className="h-10 flex-1" />
                   <Button variant="outline" className="h-10 rounded-full bg-white px-3">
                     Rename
                   </Button>
@@ -117,7 +113,7 @@ export function TeamEditor({
             ))}
           </ul>
           <form action={addRole.bind(null, orgId)} className="mt-4 flex gap-2">
-            <input name="name" placeholder="New role" className="h-10 flex-1 rounded-xl border border-line px-3 text-sm" />
+            <Input name="name" placeholder="New role" className="h-10 flex-1" />
             <Button variant="outline" className="h-10 rounded-full bg-white px-3">
               Add role
             </Button>

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { getSessionUser } from "@/lib/session";
 import { canReadPlan, hasCapability } from "@/server/access";
 import { addBlock, endEvent, moveBlock, setLiveBlock, updateSection } from "@/server/actions";
@@ -53,7 +55,7 @@ export default async function EventPlanPage({
               const open = selected?.id === item.id;
               const names = item.people.map((person) => `${person.firstName} ${person.lastName}`).join(", ");
               return (
-                <li key={item.id} className={`border-l-2 ${open ? "border-action bg-white" : "border-transparent"}`}>
+                <li key={item.id} className={open ? "bg-white" : ""}>
                   <a href={`?section=${item.id}`} className="block px-4 py-3">
                     <span className="flex items-baseline justify-between gap-3">
                       <span className="font-semibold">{item.title}</span>
@@ -67,7 +69,7 @@ export default async function EventPlanPage({
           </ol>
           {canPlan ? (
             <form action={addBlock.bind(null, orgId, eventId)} className="mt-4 flex gap-2">
-              <input name="title" required placeholder="New section" className="h-11 flex-1 rounded-xl border border-line bg-white px-3" />
+              <Input name="title" required placeholder="New section" className="h-11 flex-1" />
               <input type="hidden" name="kind" value="other" />
               <Button className="h-11 rounded-full px-4 font-semibold">Add</Button>
             </form>
@@ -78,27 +80,21 @@ export default async function EventPlanPage({
             <h2 className="text-lg font-semibold">{selected.title}</h2>
             <label className="mt-4 grid gap-1 text-sm font-medium">
               Title
-              <input name="title" required defaultValue={selected.title} className="h-11 rounded-xl border border-line px-3" />
+              <Input name="title" required defaultValue={selected.title} className="h-11" />
             </label>
             <label className="mt-3 grid gap-1 text-sm font-medium">
               Planned time (minutes)
-              <input
+              <Input
                 name="durationMinutes"
                 type="number"
                 min={1}
                 defaultValue={selected.durationMinutes ?? ""}
-                className="h-11 rounded-xl border border-line px-3"
+                className="h-11"
               />
             </label>
             <label className="mt-3 grid gap-1 text-sm font-medium">
               Description
-              <textarea
-                name="description"
-                rows={4}
-                defaultValue={selected.description}
-                placeholder="Optional"
-                className="rounded-xl border border-line px-3 py-2"
-              />
+              <Textarea name="description" rows={4} defaultValue={selected.description} placeholder="Optional" />
             </label>
             <fieldset className="mt-4 grid gap-2">
               <legend className="text-sm font-medium">People</legend>
