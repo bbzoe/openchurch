@@ -1,0 +1,25 @@
+{
+  "name": "@openchurch/design",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 3489 --host 0.0.0.0 --no-open",
+    "build": "storybook build",
+    "preview": "npx --yes serve storybook-static -l 3489"
+  },
+  "dependencies": {
+    "@fontsource/manrope": "^5.2.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "10.6.3",
+    "@storybook/react": "10.6.3",
+    "@storybook/react-vite": "10.6.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "storybook": "10.6.3",
+    "typescript": "^5",
+    "vite": "^7"
+  }
+}

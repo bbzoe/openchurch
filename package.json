@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter @openchurch/web dev",
+    "dev:design": "pnpm --filter @openchurch/design dev",
     "build": "pnpm --filter @openchurch/web build",
     "lint": "pnpm --filter @openchurch/web lint"
   },

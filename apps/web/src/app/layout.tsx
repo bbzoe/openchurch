@@ -1,40 +1,91 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
+import { site } from "@/lib/site";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const manrope = Manrope({
   subsets: ["latin", "latin-ext"],
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "OpenChurch | Open source tools for local churches",
-  description:
-    "Free, open tools for churches: service run-of-show, leader sync, and community modules. Sustained by donations.",
-  metadataBase: new URL("https://openchurch.dev"),
+  metadataBase: new URL(site.url),
+  title: {
+    default: "OpenChurch | One service. Everyone in sync.",
+    template: "%s | OpenChurch",
+  },
+  description: site.description,
+  applicationName: site.name,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "OpenChurch",
-    description:
-      "Open source tools for local churches. Free to use, sustained by donations.",
-    url: "https://openchurch.dev",
-    siteName: "OpenChurch",
+    title: "OpenChurch | One service. Everyone in sync.",
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "OpenChurch | One service. Everyone in sync.",
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: site.name,
+      url: site.url,
+      logo: `${site.url}/brand/mark.svg`,
+      email: site.email,
+      sameAs: [site.github],
+    },
+    {
+      "@type": "WebSite",
+      name: site.name,
+      url: site.url,
+      description: site.description,
+      inLanguage: "en",
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: site.name,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: site.url,
+      description: site.description,
+      isAccessibleForFree: true,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Free for church use. Managed hosting is a waitlist, not a priced plan.",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${dmSans.variable} ${fraunces.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${manrope.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-ivory text-ink">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-forest"
+        >
+          Skip to content
+        </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

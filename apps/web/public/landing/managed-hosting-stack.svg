@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" role="img">
+<defs><linearGradient id="stack" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#187F5D"/><stop offset="1" stop-color="#053E2E"/></linearGradient><linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6DE7B2"/><stop offset="1" stop-color="#18996A"/></linearGradient><linearGradient id="puff" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E3FFF0"/><stop offset="1" stop-color="#8DE9C2"/></linearGradient><filter id="shadow" x="-40%" y="-80%" width="180%" height="260%"><feGaussianBlur stdDeviation="26"/></filter></defs>
+<ellipse cx="760" cy="975" rx="470" ry="70" fill="#0C6346" opacity=".17" filter="url(#shadow)"/>
+<g fill="url(#puff)" opacity=".72"><circle cx="280" cy="820" r="160"/><circle cx="425" cy="725" r="140"/><circle cx="1100" cy="795" r="155"/><circle cx="960" cy="880" r="125"/></g>
+<g transform="translate(240 260)">
+<path d="M210 535 L590 378 L950 555 L570 730Z" fill="#034532" opacity=".4"/>
+<path d="M220 460 L600 312 L870 420 L490 575Z" fill="url(#top)"/>
+<path d="M220 460 L490 575 L490 665 L220 548Z" fill="#0F6F50"/><path d="M490 575 L870 420 L870 507 L490 665Z" fill="url(#stack)"/>
+<path d="M230 580 L610 433 L880 543 L500 700Z" fill="url(#top)"/><path d="M230 580 L500 700 L500 783 L230 668Z" fill="#0D604A"/><path d="M500 700 L880 543 L880 625 L500 783Z" fill="url(#stack)"/>
+<path d="M245 680 L625 535 L894 645 L514 800Z" fill="url(#top)"/><path d="M245 680 L514 800 L514 866 L245 748Z" fill="#0A533E"/><path d="M514 800 L894 645 L894 707 L514 866Z" fill="url(#stack)"/>
+<circle cx="295" cy="644" r="9" fill="#D4FEE6"/><circle cx="325" cy="657" r="9" fill="#D4FEE6"/><circle cx="315" cy="742" r="9" fill="#D4FEE6"/>
+</g><g transform="translate(400 55)"><path d="M275 495 C102 495 94 320 204 262 C204 106 415 84 482 230 C611 205 706 296 695 398 C694 464 644 495 577 495Z" fill="url(#top)"/><path d="M267 465 C113 465 122 332 223 294 C248 134 418 143 475 270 C580 253 653 331 648 408" fill="none" stroke="#CBFFE0" stroke-opacity=".32" stroke-width="8"/></g>
+</svg>

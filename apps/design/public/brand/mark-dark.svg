@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="OpenChurch">
+  <title>OpenChurch</title>
+  <defs>
+    <linearGradient id="h-top" gradientUnits="userSpaceOnUse" x1="8.5" y1="0.5" x2="16" y2="12">
+      <stop offset="0" stop-color="#059652"/>
+      <stop offset="0.5" stop-color="#16B960"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="h-right" gradientUnits="userSpaceOnUse" x1="16" y1="8" x2="24" y2="15">
+      <stop offset="0" stop-color="#5CE095"/>
+      <stop offset="1" stop-color="#86EFAC"/>
+    </linearGradient>
+    <linearGradient id="e-left" gradientUnits="userSpaceOnUse" x1="0" y1="9" x2="8" y2="16">
+      <stop offset="0" stop-color="#0F523B"/>
+      <stop offset="1" stop-color="#157350"/>
+    </linearGradient>
+    <linearGradient id="e-bot" gradientUnits="userSpaceOnUse" x1="8" y1="12" x2="15.5" y2="23.5">
+      <stop offset="0" stop-color="#168058"/>
+      <stop offset="1" stop-color="#1D9E6C"/>
+    </linearGradient>
+    <clipPath id="ch"><path d="M20.193 15.73C18.937 15.714 17.169 16.056 15.812 15.291C14.45 14.525 14.428 13.188 14.114 11.956C13.679 10.244 12.718 9.73 11.263 9.067C9.934 8.461 9.016 7.81 8.513 6.384C8 4.931 8.289 3.435 8.779 2.497C9.452 1.209 10.832 0.39 12.2 0.335C13.502 0.283 14.955 0.992 15.671 2.101C16.584 3.515 16.126 4.647 16.456 6.09C16.751 7.381 18.522 8.217 19.735 8.11C21.123 7.988 22.459 8.438 23.343 9.72C24.126 10.856 24.224 12.283 23.556 13.632C22.946 14.864 21.515 15.748 20.193 15.73Z"/></clipPath>
+    <clipPath id="ce"><path d="M3.807 8.27C5.063 8.286 6.831 7.944 8.188 8.709C9.55 9.475 9.572 10.812 9.886 12.044C10.321 13.756 11.282 14.27 12.737 14.933C14.066 15.539 14.984 16.19 15.487 17.616C16 19.069 15.711 20.565 15.221 21.503C14.548 22.791 13.168 23.61 11.8 23.665C10.498 23.717 9.045 23.008 8.329 21.899C7.416 20.485 7.874 19.353 7.544 17.91C7.249 16.619 5.478 15.783 4.265 15.89C2.877 16.012 1.541 15.562 0.657 14.28C-0.126 13.144 -0.224 11.717 0.444 10.368C1.054 9.136 2.485 8.252 3.807 8.27Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#ch)">
+    <rect x="0" y="0" width="24" height="24" fill="url(#h-top)"/>
+    <path d="M16.32 0H24V24H14.3V13.6C15.55 12.95 16.32 11.8 16.32 10.2V0Z" fill="url(#h-right)"/>
+  </g>
+  <g clip-path="url(#ce)">
+    <rect x="0" y="0" width="24" height="24" fill="url(#e-bot)"/>
+    <path d="M7.68 24H0V0H9.7V10.4C8.45 11.05 7.68 12.2 7.68 13.8V24Z" fill="url(#e-left)"/>
+  </g>
+</svg>

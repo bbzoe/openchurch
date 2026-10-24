@@ -1,0 +1,56 @@
+<link rel="icon" href="/brand/mark.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<title>OpenChurch</title>
+<style>
+  [class*="onboarding" i],
+  [class*="whats-new" i],
+  [class*="whatsnew" i] {
+    display: none !important;
+  }
+</style>
+<script>
+  const legacyPathMap = {
+    "manual-arkusz--docs": "manual-overview--docs",
+    "manual-arkusz--podglad": "manual-overview--sheet",
+    "manual-znak--docs": "manual-mark--docs",
+    "manual-znak--kolor": "manual-mark--color",
+    "manual-mark--kolor": "manual-mark--color",
+    "manual-mark--na-ciemnym": "manual-mark--on-dark",
+    "manual-mark--biel": "manual-mark--white",
+    "manual-mark--oddech": "manual-mark--clear-space",
+    "manual-mark--nie-rozciagaj": "manual-mark--do-not-stretch",
+    "manual-mark--pliki": "manual-mark--assets",
+    "manual-kolor--docs": "manual-color--docs",
+    "manual-kolor--paleta": "manual-color--palette",
+    "manual-typografia--docs": "manual-typography--docs",
+    "manual-typografia--inter": "manual-typography--manrope",
+    "manual-aplikacja--docs": "manual-app--docs",
+    "manual-aplikacja--rozmiary": "manual-app--sizes",
+    "manual-ruch--docs": "manual-motion--docs",
+    "manual-ruch--plus-kolo-plus": "manual-motion--plus-circle-plus",
+    "manual-misja--docs": "manual-mission--docs",
+    "manual-misja--poselstwo": "manual-mission--ambassadors",
+  };
+  const params = new URLSearchParams(window.location.search);
+  const currentPath = params.get("path") || "";
+  for (const [oldId, newId] of Object.entries(legacyPathMap)) {
+    if (currentPath.endsWith("/" + oldId)) {
+      params.set("path", currentPath.slice(0, -oldId.length) + newId);
+      window.location.replace(window.location.pathname + "?" + params.toString());
+      break;
+    }
+  }
+
+  const hideChrome = () => {
+    for (const el of document.querySelectorAll("div, section, aside, a")) {
+      const text = (el.innerText || "").trim();
+      if (text.startsWith("Get started") || text.startsWith("Storybook 10") || text === "Show new stories") {
+        el.style.display = "none";
+      }
+    }
+  };
+  new MutationObserver(hideChrome).observe(document.documentElement, { childList: true, subtree: true });
+  hideChrome();
+</script>

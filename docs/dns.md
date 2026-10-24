@@ -11,6 +11,8 @@ Nameserwery ustawione w GoDaddy (CLI `gddy`) na:
 
 Vercel: strefa DNS aktywna, projekt **openchurch** ma `openchurch.dev` i `www` → redirect na apex.
 
+Poddomena **design.openchurch.dev** jest osobnym projektem Vercel `openchurch-design` (Storybook z brand manualem). Nie podpinaj jej do projektu strony `openchurch`.
+
 Po zmianie NS certyfikat HTTPS na edge może dojść z opóźnieniem (zwykle minuty, czasem do ~1 h). Lokalny resolver macOS czasem trzyma stare rekordy GoDaddy; wtedy pomaga odświeżenie cache DNS lub test przez `dig @8.8.8.8`.
 
 ## Ręczna zmiana w GoDaddy (gdyby trzeba było powtórzyć)
