@@ -3,11 +3,14 @@ import {
   arrangement,
   block,
   blockMaterial,
+  blockPerson,
+  churchRole,
   db,
   event,
   membership,
   membershipCapability,
   organization,
+  person,
   song,
   user,
 } from "@openchurch/db";
@@ -100,11 +103,46 @@ export async function listBlocks(eventId: string) {
         .innerJoin(user, eq(user.id, membership.userId))
         .where(inArray(membership.id, assigneeIds))
     : [];
+  const assignments = ids.length
+    ? await db
+        .select({
+          blockId: blockPerson.blockId,
+          personId: person.id,
+          firstName: person.firstName,
+          lastName: person.lastName,
+          roleName: churchRole.name,
+        })
+        .from(blockPerson)
+        .innerJoin(person, eq(person.id, blockPerson.personId))
+        .innerJoin(churchRole, eq(churchRole.id, person.roleId))
+        .where(inArray(blockPerson.blockId, ids))
+    : [];
   return blocks.map((item) => ({
     ...item,
     assigneeName: members.find((member) => member.id === item.assigneeMembershipId)?.name ?? null,
     materials: materials.filter((material) => material.blockId === item.id),
+    people: assignments.filter((assignment) => assignment.blockId === item.id),
   }));
+}
+
+export async function listRoles(organizationId: string) {
+  return db.select().from(churchRole).where(eq(churchRole.organizationId, organizationId)).orderBy(asc(churchRole.position));
+}
+
+export async function listPeople(organizationId: string) {
+  return db
+    .select({
+      id: person.id,
+      firstName: person.firstName,
+      lastName: person.lastName,
+      email: person.email,
+      roleId: person.roleId,
+      roleName: churchRole.name,
+    })
+    .from(person)
+    .innerJoin(churchRole, eq(churchRole.id, person.roleId))
+    .where(eq(person.organizationId, organizationId))
+    .orderBy(asc(person.firstName), asc(person.lastName));
 }
 
 export async function listSongs(organizationId: string) {

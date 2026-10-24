@@ -29,13 +29,13 @@ export default async function ChurchHome({
       <AppHeader churchName={church.name} orgId={orgId} />
       <main className="mx-auto grid max-w-5xl gap-8 px-4 py-8 lg:grid-cols-[1.1fr_0.9fr]">
         <section>
-          <h1 className="text-3xl font-bold tracking-tight">Services</h1>
-          <p className="mt-2 text-sm text-body">One list for the room. The live moment is the same for everyone.</p>
+          <h1 className="text-3xl font-bold tracking-tight">Events</h1>
+          <p className="mt-2 text-sm text-body">Each new event starts from a short service template. Open it to shape the sections.</p>
           {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
           {visible.length === 0 ? (
             <p className="mt-6 rounded-[22px] border border-line bg-white p-6 text-sm text-body">
               {canReadPlan(membership.role)
-                ? "No services yet."
+                ? "No events yet."
                 : "When a service is live, it will show up here."}
             </p>
           ) : (
@@ -65,7 +65,7 @@ export default async function ChurchHome({
         </section>
         {canPlan ? (
           <form action={createEvent.bind(null, orgId)} className="h-fit rounded-[22px] border border-line bg-white p-6">
-            <h2 className="text-lg font-semibold">New service or gathering</h2>
+            <h2 className="text-lg font-semibold">New event</h2>
             <label className="mt-4 grid gap-1 text-sm font-medium">
               Title
               <input name="title" required className="h-11 rounded-xl border border-line px-3" />

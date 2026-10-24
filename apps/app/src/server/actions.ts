@@ -7,14 +7,18 @@ import {
   arrangement,
   block,
   blockMaterial,
+  blockPerson,
+  churchRole,
   db,
   event,
   membership,
   membershipCapability,
   organization,
+  person,
   song,
   user,
 } from "@openchurch/db";
+import { serviceTemplate, starterRoles } from "@/data/roles";
 import { denominationBySlug, listCountries, otherDenomination } from "@/data/community";
 import { getSessionUser } from "@/lib/session";
 import { capabilities, hasCapability, type Role } from "@/server/access";
@@ -60,7 +64,10 @@ export async function createChurch(formData: FormData) {
     userId: userSession.id,
     role: "admin",
   });
-  redirect(`/churches/${organizationId}`);
+  await db.insert(churchRole).values(
+    starterRoles.map((name, position) => ({ id: id(), organizationId, name, position })),
+  );
+  redirect(`/churches/${organizationId}/setup`);
 }
 
 export async function addMember(organizationId: string, formData: FormData) {
@@ -110,6 +117,17 @@ export async function createEvent(organizationId: string, formData: FormData) {
     kind,
     status: "draft",
   });
+  await db.insert(block).values(
+    serviceTemplate.map((item, position) => ({
+      id: id(),
+      eventId,
+      position,
+      kind: item.kind,
+      title: item.title,
+      durationMinutes: item.minutes,
+      description: "",
+    })),
+  );
   redirect(`/churches/${organizationId}/events/${eventId}`);
 }
 
@@ -229,6 +247,81 @@ export async function endEvent(organizationId: string, eventId: string) {
     .where(and(eq(event.id, eventId), eq(event.organizationId, organizationId)));
   revalidatePath(`/churches/${organizationId}/events/${eventId}`);
   revalidatePath(`/churches/${organizationId}/events/${eventId}/live`);
+}
+
+export async function ensureStarterRoles(organizationId: string) {
+  const existing = await db.select().from(churchRole).where(eq(churchRole.organizationId, organizationId)).limit(1);
+  if (existing.length) return;
+  await db.insert(churchRole).values(
+    starterRoles.map((name, position) => ({ id: id(), organizationId, name, position })),
+  );
+}
+
+export async function addRole(organizationId: string, formData: FormData) {
+  const row = await actor(organizationId);
+  if (!hasCapability(row.role, row.capabilities, "people") && row.role !== "admin") return;
+  const name = String(formData.get("name") ?? "").trim();
+  if (!name) return;
+  const roles = await db.select().from(churchRole).where(eq(churchRole.organizationId, organizationId));
+  await db.insert(churchRole).values({ id: id(), organizationId, name, position: roles.length });
+  revalidatePath(`/churches/${organizationId}/setup`);
+  revalidatePath(`/churches/${organizationId}/people`);
+}
+
+export async function renameRole(organizationId: string, roleId: string, formData: FormData) {
+  await actor(organizationId);
+  const name = String(formData.get("name") ?? "").trim();
+  if (!name) return;
+  await db.update(churchRole).set({ name }).where(and(eq(churchRole.id, roleId), eq(churchRole.organizationId, organizationId)));
+  revalidatePath(`/churches/${organizationId}/setup`);
+  revalidatePath(`/churches/${organizationId}/people`);
+}
+
+export async function addPerson(organizationId: string, formData: FormData) {
+  await actor(organizationId);
+  const firstName = String(formData.get("firstName") ?? "").trim();
+  const lastName = String(formData.get("lastName") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  const roleId = String(formData.get("roleId") ?? "");
+  const next = String(formData.get("next") ?? "setup") === "people" ? "people" : "setup";
+  if (!firstName || !lastName || !email || !roleId) {
+    redirect(`/churches/${organizationId}/${next}?error=Name%2C%20email%2C%20and%20role%20are%20required`);
+  }
+  await db.insert(person).values({ id: id(), organizationId, firstName, lastName, email, roleId });
+  revalidatePath(`/churches/${organizationId}/setup`);
+  revalidatePath(`/churches/${organizationId}/people`);
+}
+
+export async function updatePersonRole(organizationId: string, personId: string, formData: FormData) {
+  await actor(organizationId);
+  const roleId = String(formData.get("roleId") ?? "");
+  if (!roleId) return;
+  await db.update(person).set({ roleId }).where(and(eq(person.id, personId), eq(person.organizationId, organizationId)));
+  revalidatePath(`/churches/${organizationId}/people`);
+  revalidatePath(`/churches/${organizationId}/setup`);
+}
+
+export async function updateSection(organizationId: string, eventId: string, blockId: string, formData: FormData) {
+  const row = await actor(organizationId);
+  if (!hasCapability(row.role, row.capabilities, "plan")) return;
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+  const minutes = Number(formData.get("durationMinutes") ?? "");
+  if (!title) return;
+  await db
+    .update(block)
+    .set({
+      title,
+      description,
+      durationMinutes: Number.isFinite(minutes) && minutes > 0 ? Math.round(minutes) : null,
+    })
+    .where(and(eq(block.id, blockId), eq(block.eventId, eventId)));
+  await db.delete(blockPerson).where(eq(blockPerson.blockId, blockId));
+  const personIds = formData.getAll("personId").map(String).filter(Boolean);
+  if (personIds.length) {
+    await db.insert(blockPerson).values(personIds.map((personId) => ({ id: id(), blockId, personId })));
+  }
+  revalidatePath(`/churches/${organizationId}/events/${eventId}`);
 }
 
 export async function signOut() {

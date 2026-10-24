@@ -152,6 +152,29 @@ export const event = pgTable("event", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+export const churchRole = pgTable("church_role", {
+  id: text("id").primaryKey(),
+  organizationId: text("organization_id")
+    .notNull()
+    .references(() => organization.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  position: integer("position").notNull(),
+});
+
+export const person = pgTable("person", {
+  id: text("id").primaryKey(),
+  organizationId: text("organization_id")
+    .notNull()
+    .references(() => organization.id, { onDelete: "cascade" }),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  roleId: text("role_id")
+    .notNull()
+    .references(() => churchRole.id, { onDelete: "restrict" }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const block = pgTable("block", {
   id: text("id").primaryKey(),
   eventId: text("event_id")
@@ -160,10 +183,26 @@ export const block = pgTable("block", {
   position: integer("position").notNull(),
   kind: blockKind("kind").notNull(),
   title: text("title").notNull(),
+  description: text("description").notNull().default(""),
+  durationMinutes: integer("duration_minutes"),
   assigneeMembershipId: text("assignee_membership_id").references(() => membership.id, {
     onDelete: "set null",
   }),
 });
+
+export const blockPerson = pgTable(
+  "block_person",
+  {
+    id: text("id").primaryKey(),
+    blockId: text("block_id")
+      .notNull()
+      .references(() => block.id, { onDelete: "cascade" }),
+    personId: text("person_id")
+      .notNull()
+      .references(() => person.id, { onDelete: "cascade" }),
+  },
+  (table) => [uniqueIndex("block_person_unique").on(table.blockId, table.personId)],
+);
 
 export const blockMaterial = pgTable("block_material", {
   id: text("id").primaryKey(),

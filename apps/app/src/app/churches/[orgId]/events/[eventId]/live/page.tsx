@@ -38,7 +38,11 @@ export default async function LivePage({
         <article className="mt-10">
           <p className="text-sm font-semibold tracking-wide text-leaf uppercase">{live.kind}</p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">{live.title}</h1>
-          {live.assigneeName ? <p className="mt-3 text-lg text-leaf">{live.assigneeName}</p> : null}
+          {live.durationMinutes ? <p className="mt-3 text-leaf">{live.durationMinutes} min</p> : null}
+          {live.people.length ? (
+            <p className="mt-2 text-lg text-leaf">{live.people.map((person) => `${person.firstName} ${person.lastName}`).join(", ")}</p>
+          ) : null}
+          {live.description ? <p className="mt-6 text-2xl leading-relaxed">{live.description}</p> : null}
           <div className="mt-8 grid gap-8">
             {live.materials.map((material) => {
               const linked = payload?.songs.find((song) => song.id === material.songId);
