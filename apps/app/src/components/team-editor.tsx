@@ -18,7 +18,7 @@ export function TeamEditor({
   mode: "setup" | "people";
 }) {
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+    <div className="mx-auto max-w-2xl">
       <section>
         <h1 className="text-3xl font-bold tracking-tight">{mode === "setup" ? "Add your team" : "People"}</h1>
         <p className="mt-2 text-sm text-body">
@@ -28,9 +28,9 @@ export function TeamEditor({
         {people.length === 0 ? (
           <p className="mt-6 rounded-[22px] border border-line bg-white p-6 text-sm text-body">No one yet. Add the first person.</p>
         ) : (
-          <ul className="mt-6 grid gap-3">
+          <ul className="mt-8 divide-y divide-line border-y border-line">
             {people.map((item) => (
-              <li key={item.id} className="rounded-[22px] border border-line bg-white p-5">
+              <li key={item.id} className="py-4">
                 <p className="font-semibold">
                   {item.firstName} {item.lastName}
                 </p>
@@ -63,8 +63,8 @@ export function TeamEditor({
           </div>
         ) : null}
       </section>
-      <div className="grid h-fit gap-4">
-        <form action={addPeopleFromList.bind(null, orgId)} className="grid gap-3 rounded-[22px] border border-line bg-white p-6">
+      <div className="mt-10 grid gap-8">
+        <form action={addPeopleFromList.bind(null, orgId)} className="grid gap-3">
           <h2 className="text-lg font-semibold">Add a list of emails</h2>
           <p className="text-sm text-body">One address per line. Everyone in the list gets the role below. You can change a role after.</p>
           <input type="hidden" name="next" value={mode} />
@@ -90,8 +90,9 @@ export function TeamEditor({
           </label>
           <Button className="h-11 w-fit rounded-full px-5 font-semibold">Add emails</Button>
         </form>
-        <form action={addPerson.bind(null, orgId)} className="grid gap-3 rounded-[22px] border border-line bg-white p-6">
-          <h2 className="text-lg font-semibold">Add a person</h2>
+        <details>
+          <summary className="cursor-pointer text-sm font-semibold">Add one person</summary>
+          <form action={addPerson.bind(null, orgId)} className="mt-4 grid gap-3">
           <input type="hidden" name="next" value={mode} />
           <label className="grid gap-1 text-sm font-medium">
             First name
@@ -116,9 +117,11 @@ export function TeamEditor({
             </select>
           </label>
           <Button className="h-11 w-fit rounded-full px-5 font-semibold">Add person</Button>
-        </form>
-        <div className="rounded-[22px] border border-line bg-white p-6">
-          <h2 className="text-lg font-semibold">Roles</h2>
+          </form>
+        </details>
+        <details>
+          <summary className="cursor-pointer text-sm font-semibold">Roles</summary>
+          <div className="mt-4">
           <ul className="mt-3 grid gap-2">
             {roles.map((role) => (
               <li key={role.id}>
@@ -137,7 +140,8 @@ export function TeamEditor({
               Add role
             </Button>
           </form>
-        </div>
+          </div>
+        </details>
       </div>
     </div>
   );

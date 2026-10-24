@@ -24,16 +24,16 @@ export default async function SongsPage({
 
   return (
     <>
-      <main className="mx-auto grid max-w-5xl gap-8 px-4 py-8 lg:grid-cols-[1fr_1fr]">
+      <main className="mx-auto max-w-2xl px-6 py-10">
         <section>
           <h1 className="text-3xl font-bold tracking-tight">Songs</h1>
           {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
           {songs.length === 0 ? (
             <p className="mt-6 rounded-[22px] border border-line bg-white p-6 text-sm text-body">No songs yet.</p>
           ) : (
-            <ul className="mt-6 grid gap-3">
+            <ul className="mt-8 divide-y divide-line border-y border-line">
               {songs.map((item) => (
-                <li key={item.id} className="rounded-[22px] border border-line bg-white p-5">
+                <li key={item.id} className="py-4">
                   <p className="font-semibold">{item.title}</p>
                   <p className="text-sm text-body">
                     {item.arrangement?.name ?? "No arrangement"}
@@ -45,7 +45,7 @@ export default async function SongsPage({
           )}
         </section>
         {canEdit ? (
-          <form action={createSong.bind(null, orgId)} className="grid h-fit gap-3 rounded-[22px] border border-line bg-white p-6">
+          <form action={createSong.bind(null, orgId)} className="mt-10 grid gap-3">
             <h2 className="text-lg font-semibold">Add a song</h2>
             <label className="grid gap-1 text-sm font-medium">
               Title

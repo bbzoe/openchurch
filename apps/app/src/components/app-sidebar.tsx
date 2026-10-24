@@ -74,8 +74,8 @@ export function AppSidebar({
               </Link>
             </div>
           </details>
-          <form action={signOut} className="mt-2">
-            <Button variant="outline" className="h-9 w-full rounded-full bg-white">
+          <form action={signOut} className="mt-1">
+            <Button variant="ghost" className="h-9 w-full justify-start px-2 text-body">
               Sign out
             </Button>
           </form>

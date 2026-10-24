@@ -65,3 +65,14 @@ body {
   outline: 2px solid var(--action);
   outline-offset: 3px;
 }
+
+input,
+select,
+textarea {
+  background: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8aa399;
+}

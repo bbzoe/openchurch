@@ -31,12 +31,12 @@ export default async function EventPlanPage({
 
   return (
     <>
-      <main className="mx-auto grid max-w-5xl gap-6 px-4 py-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <main className="mx-auto grid max-w-5xl gap-8 px-6 py-10 lg:grid-cols-[0.85fr_1.15fr]">
         <section>
-          <p className="text-xs font-semibold tracking-wide text-action uppercase">{current.status}</p>
-          <h1 className="mt-1 text-3xl font-bold tracking-tight">{current.title}</h1>
+          <h1 className="text-3xl font-bold tracking-tight">{current.title}</h1>
           <p className="mt-2 text-sm text-body">
             {current.startsAt.toLocaleString("en", { dateStyle: "medium", timeStyle: "short" })}
+            <span className="capitalize">, {current.status}</span>
           </p>
           <div className="mt-3 flex gap-3 text-sm">
             <Link href={`/churches/${orgId}/events/${eventId}/live`} className="font-semibold text-action">
@@ -48,33 +48,19 @@ export default async function EventPlanPage({
               </form>
             ) : null}
           </div>
-          <ol className="mt-6 grid gap-2">
-            {blocks.map((item, index) => {
+          <ol className="mt-8 divide-y divide-line border-y border-line">
+            {blocks.map((item) => {
               const open = selected?.id === item.id;
               const names = item.people.map((person) => `${person.firstName} ${person.lastName}`).join(", ");
               return (
-                <li key={item.id} className={`rounded-[22px] border bg-white ${open ? "border-action" : "border-line"}`}>
+                <li key={item.id} className={`border-l-2 ${open ? "border-action bg-white" : "border-transparent"}`}>
                   <a href={`?section=${item.id}`} className="block px-4 py-3">
                     <span className="flex items-baseline justify-between gap-3">
                       <span className="font-semibold">{item.title}</span>
-                      <span className="text-xs text-body">{item.durationMinutes ? `${item.durationMinutes} min` : "No time"}</span>
+                      <span className="text-sm text-body">{item.durationMinutes ? `${item.durationMinutes} min` : ""}</span>
                     </span>
-                    <span className="mt-1 block text-sm text-body">{names || "No one assigned"}</span>
+                    <span className="mt-1 block text-sm text-body">{names || "No one yet"}</span>
                   </a>
-                  {open && canPlan ? (
-                    <div className="flex gap-2 px-4 pb-3">
-                      <form action={moveBlock.bind(null, orgId, eventId, item.id, "up")}>
-                        <Button variant="outline" disabled={index === 0} className="h-8 rounded-full bg-white px-3">
-                          Up
-                        </Button>
-                      </form>
-                      <form action={moveBlock.bind(null, orgId, eventId, item.id, "down")}>
-                        <Button variant="outline" disabled={index === blocks.length - 1} className="h-8 rounded-full bg-white px-3">
-                          Down
-                        </Button>
-                      </form>
-                    </div>
-                  ) : null}
                 </li>
               );
             })}
@@ -88,8 +74,8 @@ export default async function EventPlanPage({
           ) : null}
         </section>
         {selected ? (
-          <form action={updateSection.bind(null, orgId, eventId, selected.id)} className="h-fit rounded-[22px] border border-line bg-white p-6">
-            <h2 className="text-lg font-semibold">Section</h2>
+          <form action={updateSection.bind(null, orgId, eventId, selected.id)} className="h-fit lg:sticky lg:top-8">
+            <h2 className="text-lg font-semibold">{selected.title}</h2>
             <label className="mt-4 grid gap-1 text-sm font-medium">
               Title
               <input name="title" required defaultValue={selected.title} className="h-11 rounded-xl border border-line px-3" />
@@ -138,14 +124,24 @@ export default async function EventPlanPage({
                 ))
               )}
             </fieldset>
-            {canPlan ? <Button className="mt-5 h-11 rounded-full px-5 font-semibold">Save section</Button> : null}
-            {canLive ? (
-              <div className="mt-3">
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              {canPlan ? <Button className="h-11 rounded-full px-5 font-semibold">Save section</Button> : null}
+              {canLive ? (
                 <button formAction={setLiveBlock.bind(null, orgId, eventId, selected.id)} className="text-sm font-semibold text-action">
                   Set as now
                 </button>
-              </div>
-            ) : null}
+              ) : null}
+              {canPlan ? (
+                <>
+                  <button formAction={moveBlock.bind(null, orgId, eventId, selected.id, "up")} className="text-sm text-body">
+                    Move up
+                  </button>
+                  <button formAction={moveBlock.bind(null, orgId, eventId, selected.id, "down")} className="text-sm text-body">
+                    Move down
+                  </button>
+                </>
+              ) : null}
+            </div>
           </form>
         ) : (
           <p className="text-sm text-body">This event has no sections yet.</p>
