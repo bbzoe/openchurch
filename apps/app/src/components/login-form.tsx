@@ -21,6 +21,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"form">)
       const result = await authClient.signIn.email({
         email: String(formData.get("email") ?? ""),
         password: String(formData.get("password") ?? ""),
+        rememberMe: formData.get("remember") === "on",
       });
       if (result.error) {
         setError(result.error.message ?? "Could not sign in");
@@ -46,11 +47,20 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"form">)
         </div>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" name="email" type="email" placeholder="m@example.com" required className="bg-background" />
+          <Input id="email" name="email" type="email" autoComplete="email" placeholder="m@example.com" required className="bg-background" />
         </Field>
         <Field>
-          <FieldLabel htmlFor="password">Password</FieldLabel>
-          <Input id="password" name="password" type="password" required minLength={8} className="bg-background" />
+          <div className="flex items-center">
+            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <Link href="/forgot-password" className="ml-auto text-sm underline-offset-4 hover:underline">
+              Forgot password?
+            </Link>
+          </div>
+          <Input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} className="bg-background" />
+        </Field>
+        <Field orientation="horizontal">
+          <input id="remember" name="remember" type="checkbox" defaultChecked className="size-4 accent-action" />
+          <FieldLabel htmlFor="remember">Remember me</FieldLabel>
         </Field>
         {error ? <p className="text-sm text-destructive">{error}</p> : null}
         <Field>

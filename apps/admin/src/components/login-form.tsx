@@ -17,6 +17,7 @@ export function LoginForm() {
       const result = await authClient.signIn.email({
         email: String(formData.get("email") ?? ""),
         password: String(formData.get("password") ?? ""),
+        rememberMe: formData.get("remember") === "on",
       });
       if (result.error) {
         setError(result.error.message ?? "Could not sign in");
@@ -39,11 +40,20 @@ export function LoginForm() {
       </div>
       <label className="grid gap-1 text-sm font-medium">
         Email
-        <input name="email" type="email" required className="h-11 rounded-xl border border-line bg-white px-3" />
+        <input name="email" type="email" autoComplete="email" required className="h-11 rounded-xl border border-line bg-white px-3" />
       </label>
-      <label className="grid gap-1 text-sm font-medium">
-        Password
-        <input name="password" type="password" required className="h-11 rounded-xl border border-line bg-white px-3" />
+      <div className="grid gap-1">
+        <div className="flex items-center justify-between text-sm font-medium">
+          <label htmlFor="password">Password</label>
+          <a href="/forgot-password" className="font-normal underline-offset-4 hover:underline">
+            Forgot password?
+          </a>
+        </div>
+        <input id="password" name="password" type="password" autoComplete="current-password" required className="h-11 rounded-xl border border-line bg-white px-3" />
+      </div>
+      <label className="flex items-center gap-2 text-sm">
+        <input name="remember" type="checkbox" defaultChecked className="size-4 accent-action" />
+        Remember me
       </label>
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
       <Button disabled={pending} className="h-11">
