@@ -277,6 +277,46 @@ export async function renameRole(organizationId: string, roleId: string, formDat
   revalidatePath(`/churches/${organizationId}/people`);
 }
 
+function namesFromEmail(email: string) {
+  const local = email.split("@")[0]?.replace(/[._+-]+/g, " ").trim() ?? "";
+  const parts = local.split(/\s+/).filter(Boolean);
+  const label = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
+  if (parts.length === 0) return { firstName: email, lastName: "" };
+  if (parts.length === 1) return { firstName: label(parts[0]), lastName: "" };
+  return { firstName: label(parts[0]), lastName: parts.slice(1).map(label).join(" ") };
+}
+
+function emailsFromList(raw: string) {
+  const found = raw
+    .split(/[\s,;]+/)
+    .map((item) => item.trim().toLowerCase().replace(/^<|>$/g, ""))
+    .filter((item) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(item));
+  return [...new Set(found)];
+}
+
+export async function addPeopleFromList(organizationId: string, formData: FormData) {
+  await actor(organizationId);
+  const next = String(formData.get("next") ?? "setup") === "people" ? "people" : "setup";
+  const roleId = String(formData.get("roleId") ?? "");
+  const emails = emailsFromList(String(formData.get("emails") ?? ""));
+  if (!roleId || emails.length === 0) {
+    redirect(`/churches/${organizationId}/${next}?error=Paste%20at%20least%20one%20email`);
+  }
+  const existing = await db.select({ email: person.email }).from(person).where(eq(person.organizationId, organizationId));
+  const known = new Set(existing.map((item) => item.email.toLowerCase()));
+  const fresh = emails.filter((email) => !known.has(email));
+  if (fresh.length) {
+    await db.insert(person).values(
+      fresh.map((email) => {
+        const names = namesFromEmail(email);
+        return { id: id(), organizationId, email, roleId, ...names };
+      }),
+    );
+  }
+  revalidatePath(`/churches/${organizationId}/setup`);
+  revalidatePath(`/churches/${organizationId}/people`);
+}
+
 export async function addPerson(organizationId: string, formData: FormData) {
   await actor(organizationId);
   const firstName = String(formData.get("firstName") ?? "").trim();

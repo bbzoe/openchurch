@@ -1,4 +1,4 @@
-import { addPerson, addRole, renameRole, updatePersonRole } from "@/server/actions";
+import { addPeopleFromList, addPerson, addRole, renameRole, updatePersonRole } from "@/server/actions";
 import { Button } from "@/components/ui/button";
 
 type Role = { id: string; name: string };
@@ -22,7 +22,7 @@ export function TeamEditor({
       <section>
         <h1 className="text-3xl font-bold tracking-tight">{mode === "setup" ? "Add your team" : "People"}</h1>
         <p className="mt-2 text-sm text-body">
-          First name, last name, email, and a role. Pastor, Deacon, and Worship leader are already here. Add your own roles if you need them.
+          Paste a list of emails, or add one person at a time. Pastor, Deacon, and Worship leader are already here. You can change a role later.
         </p>
         {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
         {people.length === 0 ? (
@@ -64,6 +64,32 @@ export function TeamEditor({
         ) : null}
       </section>
       <div className="grid h-fit gap-4">
+        <form action={addPeopleFromList.bind(null, orgId)} className="grid gap-3 rounded-[22px] border border-line bg-white p-6">
+          <h2 className="text-lg font-semibold">Add a list of emails</h2>
+          <p className="text-sm text-body">One address per line. Everyone in the list gets the role below. You can change a role after.</p>
+          <input type="hidden" name="next" value={mode} />
+          <label className="grid gap-1 text-sm font-medium">
+            Emails
+            <textarea
+              name="emails"
+              required
+              rows={8}
+              placeholder={"anna@church.org\npiotr@church.org"}
+              className="rounded-xl border border-line px-3 py-2"
+            />
+          </label>
+          <label className="grid gap-1 text-sm font-medium">
+            Role for this list
+            <select name="roleId" className="h-11 rounded-xl border border-line bg-white px-3">
+              {roles.map((role) => (
+                <option key={role.id} value={role.id}>
+                  {role.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Button className="h-11 w-fit rounded-full px-5 font-semibold">Add emails</Button>
+        </form>
         <form action={addPerson.bind(null, orgId)} className="grid gap-3 rounded-[22px] border border-line bg-white p-6">
           <h2 className="text-lg font-semibold">Add a person</h2>
           <input type="hidden" name="next" value={mode} />
