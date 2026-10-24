@@ -23,6 +23,7 @@ export async function listMyChurches(userId: string) {
       role: membership.role,
       organizationId: organization.id,
       name: organization.name,
+      city: organization.city,
     })
     .from(membership)
     .innerJoin(organization, eq(organization.id, membership.organizationId))

@@ -1,5 +1,4 @@
 import { notFound, redirect } from "next/navigation";
-import { AppHeader } from "@/components/app-header";
 import { TeamEditor } from "@/components/team-editor";
 import { getSessionUser } from "@/lib/session";
 import { ensureStarterRoles } from "@/server/actions";
@@ -25,7 +24,6 @@ export default async function PeoplePage({
 
   return (
     <>
-      <AppHeader churchName={church.name} orgId={orgId} />
       <main className="mx-auto max-w-5xl px-4 py-8">
         <TeamEditor orgId={orgId} roles={roles} people={people} error={error} mode="people" />
       </main>

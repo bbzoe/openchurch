@@ -46,9 +46,9 @@ export async function createChurch(formData: FormData) {
   const custom = String(formData.get("denominationCustom") ?? "").trim();
   const country = listCountries().find((item) => item.code === countryCode);
   const known = slug === otherDenomination ? null : denominationBySlug(slug);
-  if (!name || !city || !country) redirect("/churches?error=Name%2C%20country%2C%20and%20city%20are%20required");
-  if (slug === otherDenomination && !custom) redirect("/churches?error=Name%20the%20church%20body");
-  if (slug !== otherDenomination && !known) redirect("/churches?error=Choose%20a%20denomination");
+  if (!name || !city || !country) redirect("/churches/new?error=Name%2C%20country%2C%20and%20city%20are%20required");
+  if (slug === otherDenomination && !custom) redirect("/churches/new?error=Name%20the%20church%20body");
+  if (slug !== otherDenomination && !known) redirect("/churches/new?error=Choose%20a%20denomination");
   const organizationId = id();
   await db.insert(organization).values({
     id: organizationId,

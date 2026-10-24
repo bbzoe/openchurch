@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { AppHeader } from "@/components/app-header";
 import { Button } from "@/components/ui/button";
 import { getSessionUser } from "@/lib/session";
 import { canReadPlan, hasCapability } from "@/server/access";
@@ -32,7 +31,6 @@ export default async function EventPlanPage({
 
   return (
     <>
-      <AppHeader churchName={church.name} orgId={orgId} />
       <main className="mx-auto grid max-w-5xl gap-6 px-4 py-8 lg:grid-cols-[0.9fr_1.1fr]">
         <section>
           <p className="text-xs font-semibold tracking-wide text-action uppercase">{current.status}</p>

@@ -1,5 +1,4 @@
 import { notFound, redirect } from "next/navigation";
-import { AppHeader } from "@/components/app-header";
 import { Button } from "@/components/ui/button";
 import { getSessionUser } from "@/lib/session";
 import { hasCapability } from "@/server/access";
@@ -25,7 +24,6 @@ export default async function SongsPage({
 
   return (
     <>
-      <AppHeader churchName={church.name} orgId={orgId} />
       <main className="mx-auto grid max-w-5xl gap-8 px-4 py-8 lg:grid-cols-[1fr_1fr]">
         <section>
           <h1 className="text-3xl font-bold tracking-tight">Songs</h1>
