@@ -1,0 +1,32 @@
+{
+  "name": "@openchurch/admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3493",
+    "build": "next build",
+    "start": "next start -p 3493",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@openchurch/db": "workspace:*",
+    "better-auth": "^1.3.27",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.5.0",
+    "drizzle-orm": "^0.45.2",
+    "next": "16.4.2",
+    "radix-ui": "^1.8.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

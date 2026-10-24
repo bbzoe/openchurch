@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --forest: #0f3d2e;
+  --action: #116b4e;
+  --growth: #22c55e;
+  --leaf: #86efac;
+  --canvas: #f6fbf7;
+  --ivory: #fffdf8;
+  --ink: #101f1b;
+  --body: #3e5650;
+  --line: #dfeae3;
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --primary: var(--action);
+  --primary-foreground: #f6fbf7;
+  --secondary: var(--canvas);
+  --secondary-foreground: var(--forest);
+  --muted: var(--canvas);
+  --muted-foreground: var(--body);
+  --accent: #e7f8ee;
+  --accent-foreground: var(--forest);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--action);
+  --destructive: #b42318;
+  --radius: 0.875rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-forest: var(--forest);
+  --color-action: var(--action);
+  --color-leaf: var(--leaf);
+  --color-canvas: var(--canvas);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --font-sans: var(--font-sans);
+  --radius-lg: var(--radius);
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}

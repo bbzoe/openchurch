@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "pnpm --filter @openchurch/web dev",
     "dev:app": "pnpm --filter @openchurch/app dev",
+    "dev:admin": "pnpm --filter @openchurch/admin dev",
     "dev:design": "pnpm --filter @openchurch/design dev",
     "db:push": "pnpm --filter @openchurch/db push",
     "build": "pnpm --filter @openchurch/web build",

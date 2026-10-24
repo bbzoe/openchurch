@@ -15,6 +15,7 @@ import {
   song,
   user,
 } from "@openchurch/db";
+import { denominationBySlug, listCountries, otherDenomination } from "@/data/community";
 import { getSessionUser } from "@/lib/session";
 import { capabilities, hasCapability, type Role } from "@/server/access";
 import { getEvent, getMembership, listBlocks } from "@/server/queries";
@@ -35,9 +36,24 @@ export async function createChurch(formData: FormData) {
   const userSession = await getSessionUser();
   if (!userSession) redirect("/sign-in");
   const name = String(formData.get("name") ?? "").trim();
-  if (!name) redirect("/churches?error=Name%20the%20church");
+  const countryCode = String(formData.get("country") ?? "").trim().toUpperCase();
+  const city = String(formData.get("city") ?? "").trim();
+  const slug = String(formData.get("denomination") ?? "");
+  const custom = String(formData.get("denominationCustom") ?? "").trim();
+  const country = listCountries().find((item) => item.code === countryCode);
+  const known = slug === otherDenomination ? null : denominationBySlug(slug);
+  if (!name || !city || !country) redirect("/churches?error=Name%2C%20country%2C%20and%20city%20are%20required");
+  if (slug === otherDenomination && !custom) redirect("/churches?error=Name%20the%20church%20body");
+  if (slug !== otherDenomination && !known) redirect("/churches?error=Choose%20a%20denomination");
   const organizationId = id();
-  await db.insert(organization).values({ id: organizationId, name });
+  await db.insert(organization).values({
+    id: organizationId,
+    name,
+    countryCode,
+    city,
+    denominationSlug: slug,
+    denominationName: known?.name ?? custom,
+  });
   await db.insert(membership).values({
     id: id(),
     organizationId,

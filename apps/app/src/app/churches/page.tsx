@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
 import { AppHeader } from "@/components/app-header";
-import { Button } from "@/components/ui/button";
+import { ChurchForm } from "@/components/church-form";
 import { getSessionUser } from "@/lib/session";
-import { createChurch } from "@/server/actions";
 import { listMyChurches } from "@/server/queries";
 
 export default async function ChurchesPage({
@@ -43,14 +42,7 @@ export default async function ChurchesPage({
             ))}
           </ul>
         )}
-        <form action={createChurch} className="grid gap-3 rounded-[22px] border border-line bg-white p-6">
-          <h2 className="text-lg font-semibold">Start a church</h2>
-          <label className="grid gap-1 text-sm font-medium">
-            Name
-            <input name="name" required className="h-11 rounded-xl border border-line px-3" />
-          </label>
-          <Button className="h-11 w-fit rounded-full px-5 font-semibold">Create church</Button>
-        </form>
+        <ChurchForm />
       </main>
     </>
   );

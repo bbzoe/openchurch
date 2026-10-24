@@ -11,6 +11,7 @@ Open source tools for local churches: service run-of-show for leaders, then modu
 |------|---------|
 | `apps/web` | Marketing landing (Next.js, port **3488** locally) |
 | `apps/app` | Church app: account, plan, live view (Next.js, port **3492** locally) |
+| `apps/admin` | Operator panel (Next.js, port **3493** locally, `admin.openchurch.dev`) |
 | `apps/design` | Brand manual in Storybook (port **3489** locally, `design.openchurch.dev`) |
 | `packages/db` | Postgres schema (Drizzle) shared by the app |
 

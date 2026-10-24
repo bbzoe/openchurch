@@ -77,6 +77,17 @@ export const verification = pgTable("verification", {
 export const organization = pgTable("organization", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
+  countryCode: text("country_code").notNull(),
+  city: text("city").notNull(),
+  denominationSlug: text("denomination_slug").notNull(),
+  denominationName: text("denomination_name").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const platformAdmin = pgTable("platform_admin", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => user.id, { onDelete: "cascade" }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
