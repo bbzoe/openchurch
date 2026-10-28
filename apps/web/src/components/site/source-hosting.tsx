@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Button } from "@/components/ui/button";
 import { GithubMark, Icon } from "@/components/site/icon";
+import { BotanicalScatter } from "@/components/brand/leaves";
 import { site } from "@/lib/site";
 
 const files = ["src", "components", "services", "mobile", "docs"];
@@ -47,31 +49,15 @@ function CodeLine({ n, children }: { n: number; children?: ReactNode }) {
 
 function HostingArt() {
   return (
-    <div className="relative min-h-[280px] overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_50%,#d7f8e8_0%,#f7fdf9_72%)]" />
-      <svg viewBox="70 50 400 360" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMaxYMid meet">
-        <ellipse cx="150" cy="310" rx="100" ry="72" fill="#E7FBF2" />
-        <ellipse cx="390" cy="340" rx="120" ry="84" fill="#D5F6E7" />
-        <ellipse cx="430" cy="200" rx="70" ry="48" fill="#EAFBF4" />
-        <ellipse cx="250" cy="118" rx="78" ry="52" fill="#0E4A38" />
-        <ellipse cx="196" cy="136" rx="52" ry="40" fill="#14624A" />
-        <ellipse cx="312" cy="132" rx="58" ry="42" fill="#0C3D2E" />
-        <g>
-          <rect x="132" y="292" width="230" height="54" rx="12" fill="#0A3A2C" />
-          <rect x="132" y="292" width="230" height="18" rx="12" fill="#157A58" />
-          <circle cx="156" cy="326" r="3.2" fill="#BBF7D0" />
-          <circle cx="170" cy="326" r="3.2" fill="#86EFAC" opacity="0.55" />
-          <rect x="118" y="230" width="258" height="58" rx="14" fill="#0C4534" />
-          <rect x="118" y="230" width="258" height="20" rx="14" fill="#1A8A62" />
-          <circle cx="144" cy="268" r="3.4" fill="#D1FAE5" />
-          <circle cx="158" cy="268" r="3.4" fill="#86EFAC" opacity="0.6" />
-          <rect x="104" y="164" width="286" height="64" rx="16" fill="#0E4F3C" />
-          <rect x="104" y="164" width="286" height="22" rx="16" fill="#1C9A6C" />
-          <circle cx="132" cy="206" r="3.6" fill="#ECFDF5" />
-          <circle cx="148" cy="206" r="3.6" fill="#86EFAC" opacity="0.7" />
-        </g>
-        <image href="/brand/mark.svg" x="198" y="70" width="110" height="110" />
-      </svg>
+    <div
+      aria-hidden="true"
+      className="relative h-72 overflow-hidden bg-[#f3fbf6] lg:absolute lg:inset-y-0 lg:right-0 lg:left-[22.5rem] lg:h-auto"
+    >
+      <img
+        src="/landing/managed-hosting-stack.svg"
+        alt=""
+        className="absolute inset-0 h-full w-full origin-center scale-110 object-contain object-center"
+      />
     </div>
   );
 }
@@ -82,44 +68,42 @@ export function SourceAndHosting() {
       <div className="oc-wrap grid items-stretch gap-5 lg:grid-cols-2">
         <article
           id="open-source"
-          className="relative flex items-center overflow-hidden rounded-[28px] bg-[#0B3A2C] p-7 text-canvas sm:p-9 lg:p-11"
+          className="@container relative overflow-hidden rounded-[28px] bg-[#0B3A2C] text-canvas @[32rem]:min-h-[31.5rem]"
         >
+          <BotanicalScatter compact />
+          <div className="relative z-10 flex min-h-0 flex-col justify-start px-7 py-8 sm:px-9 sm:py-10 @[32rem]:absolute @[32rem]:top-5 @[32rem]:bottom-5 @[32rem]:left-0 @[32rem]:w-[19.5rem] @[32rem]:px-0 @[32rem]:py-0 @[32rem]:pl-10 @[32rem]:pr-3">
+            <p className="text-[11px] font-semibold tracking-[0.18em] text-white/70 uppercase">Open source</p>
+            <h2
+              id="source-heading"
+              className="mt-3 text-[clamp(1.9rem,2.3vw,2.3rem)] leading-[1.12] font-bold tracking-[-0.04em] @[32rem]:text-[1.85rem]"
+            >
+              <span className="block whitespace-nowrap">Free &amp; open source</span>
+              <span className="block">for everyone.</span>
+            </h2>
+            <p className="mt-4 max-w-[30ch] text-[15px] leading-relaxed text-white/78">
+              Own your tools. Host them yourself. Contribute, customize and help build a
+              better church tech ecosystem.
+            </p>
+            <div className="mt-7 @[32rem]:mt-auto @[32rem]:pt-0">
+              <Button
+                asChild
+                className="h-11 w-fit gap-2 rounded-full bg-white px-4 text-sm font-semibold text-[#0B3A2C] hover:bg-[#e7f8ee]"
+              >
+                <a href={site.github} target="_blank" rel="noopener noreferrer">
+                  <GithubMark className="size-4" />
+                  Available on GitHub
+                  <Icon name="arrow" className="size-4" />
+                </a>
+              </Button>
+            </div>
+          </div>
+
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[url('/landing/footer-botanical-dark.svg')] bg-cover opacity-30"
-          />
-          <div className="relative grid w-full items-center gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(280px,1.18fr)]">
-            <div>
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-white/70 uppercase">Open source</p>
-              <h2
-                id="source-heading"
-                className="mt-3 max-w-[10ch] text-[clamp(2.1rem,3.2vw,3rem)] leading-[1.05] font-bold tracking-[-0.035em]"
-              >
-                Free &amp; open source for everyone.
-              </h2>
-              <p className="mt-4 max-w-[32ch] text-[15px] leading-relaxed text-white/78">
-                Own your tools. Host them yourself. Contribute, customize and help build a
-                better church tech ecosystem.
-              </p>
-              <a
-                href={site.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-3 text-sm font-semibold text-white"
-              >
-                <span className="grid size-11 place-items-center rounded-full bg-white text-[#0B3A2C]">
-                  <GithubMark className="size-5" />
-                </span>
-                Available on GitHub
-                <Icon name="arrow" className="size-4" />
-              </a>
-            </div>
-
-            <div
-              aria-hidden="true"
-              className="overflow-hidden rounded-[18px] border border-white/10 bg-[#071510] shadow-[0_24px_50px_-28px_rgba(0,0,0,0.85)]"
-            >
-              <div className="flex items-center gap-4 border-b border-white/10 px-3.5 py-2.5 text-[11px] text-white/45">
+            className="relative z-0 mt-6 ml-7 h-[18.5rem] w-[calc(100%+2.5rem)] sm:ml-9 @[32rem]:absolute @[32rem]:top-5 @[32rem]:bottom-5 @[32rem]:left-[19.5rem] @[32rem]:ml-0 @[32rem]:mt-0 @[32rem]:h-auto @[32rem]:w-auto @[32rem]:right-[-14%]"
+          >
+            <div className="flex h-full flex-col overflow-hidden rounded-l-[20px] border border-white/10 bg-[#071510] shadow-[-32px_24px_50px_-28px_rgba(0,0,0,0.75)]">
+              <div className="flex items-center gap-5 border-b border-white/10 px-4 py-3 text-[12.5px] whitespace-nowrap text-white/45">
                 <span className="inline-flex items-center gap-1.5 border-b-2 border-[#7EE2A8] pb-1 font-semibold text-[#7EE2A8]">
                   <Icon name="code" className="size-3.5" />
                   Code
@@ -133,8 +117,8 @@ export function SourceAndHosting() {
                   Pull requests
                 </span>
               </div>
-              <div className="grid min-w-0 grid-cols-[104px_minmax(0,1fr)] text-[11px] leading-[1.55]">
-                <ul className="border-r border-white/10 px-2.5 py-3 text-white/70">
+              <div className="grid min-h-0 flex-1 grid-cols-[128px_minmax(0,1fr)] text-[13px] leading-[1.65]">
+                <ul className="border-r border-white/10 px-3 py-4 text-white/70">
                   <li className="flex items-center gap-1 font-semibold text-white">
                     <Caret />
                     openchurch/
@@ -147,7 +131,7 @@ export function SourceAndHosting() {
                   ))}
                   <li className="pl-5 text-white/40">...</li>
                 </ul>
-                <ol className="min-w-0 overflow-hidden py-3 pr-3 font-mono text-[10px] text-[#E7FFF1] sm:text-[11px]">
+                <ol className="min-w-0 overflow-hidden py-4 pr-8 font-mono text-[12.5px] text-[#E7FFF1]">
                   <CodeLine n={1}>
                     <Kw>import</Kw>
                     {" { Service }"}
@@ -194,11 +178,11 @@ export function SourceAndHosting() {
 
         <article
           id="hosting"
-          className="grid overflow-hidden rounded-[28px] border border-line bg-white lg:grid-cols-[minmax(0,0.95fr)_minmax(200px,1.05fr)]"
+          className="relative overflow-hidden rounded-[28px] border border-line bg-white"
         >
-          <div className="flex flex-col p-7 sm:p-9 lg:py-10 lg:pr-0 lg:pl-10">
+          <div className="relative z-10 flex min-w-0 flex-col p-7 sm:p-9 lg:min-h-[31.5rem] lg:w-[22.5rem] lg:py-10 lg:pr-8 lg:pl-10">
             <p className="text-[11px] font-semibold tracking-[0.18em] text-action uppercase">Managed hosting</p>
-            <h2 className="mt-3 text-[clamp(1.85rem,2.5vw,2.55rem)] leading-[1.05] font-bold tracking-[-0.035em] text-ink">
+            <h2 className="mt-3 text-[clamp(1.75rem,2.1vw,2.15rem)] leading-[1.08] font-bold tracking-[-0.035em] text-ink">
               Focus on ministry.
               <br />
               We handle the infrastructure.
@@ -208,10 +192,10 @@ export function SourceAndHosting() {
             </p>
             <div className="mt-auto pt-8">
               <Button asChild className="h-11 rounded-full px-5 text-sm font-semibold hover:bg-forest">
-                <a href={site.hostingWaitlist}>
+                <TrackedLink href={site.hostingWaitlist} leadType="hosting_waitlist" location="hosting">
                   Join hosting waitlist
                   <Icon name="arrow" className="size-4" />
-                </a>
+                </TrackedLink>
               </Button>
             </div>
           </div>

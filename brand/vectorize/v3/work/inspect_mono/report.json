@@ -1,0 +1,65 @@
+{
+  "summary": {
+    "target": "general",
+    "view_box": [
+      0.0,
+      0.0,
+      960.0,
+      960.0
+    ],
+    "shapes": 2,
+    "path_anchors": 24,
+    "native_primitives": 0,
+    "colors": {
+      "#0f3d2e": 2
+    },
+    "findings": {
+      "error": 0,
+      "warn": 0,
+      "info": 0
+    }
+  },
+  "elements": [
+    {
+      "id": "heaven",
+      "tag": "path",
+      "fill": "#0f3d2e",
+      "stroke": null,
+      "anchors": 12,
+      "native_primitive": false,
+      "segments": {
+        "C": 12
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        331.7,
+        13.37,
+        959.99,
+        629.77
+      ],
+      "via_use": false
+    },
+    {
+      "id": "earth",
+      "tag": "path",
+      "fill": "#0f3d2e",
+      "stroke": null,
+      "anchors": 12,
+      "native_primitive": false,
+      "segments": {
+        "C": 12
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        0.01,
+        330.23,
+        628.3,
+        946.63
+      ],
+      "via_use": false
+    }
+  ],
+  "findings": []
+}

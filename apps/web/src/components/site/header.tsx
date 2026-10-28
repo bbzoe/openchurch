@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/site/icon";
 import { MobileNav } from "@/components/site/mobile-nav";
@@ -44,10 +45,10 @@ export function Header() {
             asChild
             className="h-10 rounded-full px-4 text-sm font-semibold hover:bg-forest"
           >
-            <a href={site.earlyAccess}>
+            <TrackedLink href={site.earlyAccess} leadType="early_access" location="header">
               Join early access
               <Icon name="arrow" className="size-4" />
-            </a>
+            </TrackedLink>
           </Button>
         </div>
       </div>

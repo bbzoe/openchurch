@@ -7,6 +7,9 @@ const url = process.env.DATABASE_URL ?? "postgres://openchurch:openchurch@127.0.
 const client = postgres(url, {
   max: 1,
   prepare: false,
+  idle_timeout: 20,
+  connect_timeout: 30,
+  max_lifetime: 60 * 5,
 });
 
 export const db = drizzle(client, { schema });

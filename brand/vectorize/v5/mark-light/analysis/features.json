@@ -1,0 +1,1575 @@
+{
+  "background": [
+    249,
+    250,
+    245,
+    255
+  ],
+  "components": [
+    {
+      "id": 1,
+      "bbox": [
+        1,
+        1,
+        8,
+        15
+      ],
+      "area_px": 74,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 34,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            1.5,
+            15.5
+          ],
+          "p1": [
+            1.5,
+            15.5
+          ],
+          "span": 37.3,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "bbox": [
+        12,
+        1,
+        23,
+        14
+      ],
+      "area_px": 101,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 42,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            14.5,
+            14.5
+          ],
+          "p1": [
+            14.5,
+            14.5
+          ],
+          "span": 45.3,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "bbox": [
+        33,
+        1,
+        47,
+        15
+      ],
+      "area_px": 169,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 65,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            47.5,
+            15.5
+          ],
+          "p1": [
+            47.5,
+            15.5
+          ],
+          "span": 69.6,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "bbox": [
+        59,
+        1,
+        75,
+        15
+      ],
+      "area_px": 165,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 68,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            75.5,
+            14.5
+          ],
+          "p1": [
+            75.5,
+            14.5
+          ],
+          "n_points": 69,
+          "arc_err": 5.933
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "bbox": [
+        86,
+        1,
+        103,
+        15
+      ],
+      "area_px": 150,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 63,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            88.5,
+            1.5
+          ],
+          "p1": [
+            88.5,
+            1.5
+          ],
+          "span": 73.4,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "bbox": [
+        112,
+        1,
+        127,
+        15
+      ],
+      "area_px": 124,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 49,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            127.5,
+            1.5
+          ],
+          "p1": [
+            127.5,
+            1.5
+          ],
+          "span": 54.4,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "bbox": [
+        135,
+        1,
+        156,
+        15
+      ],
+      "area_px": 195,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 63,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            156.5,
+            13.5
+          ],
+          "p1": [
+            156.5,
+            13.5
+          ],
+          "span": 72.5,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "bbox": [
+        180,
+        1,
+        195,
+        15
+      ],
+      "area_px": 130,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 49,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            195.5,
+            1.5
+          ],
+          "p1": [
+            195.5,
+            1.5
+          ],
+          "span": 54.4,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "bbox": [
+        203,
+        1,
+        223,
+        15
+      ],
+      "area_px": 192,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 61,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            203.5,
+            13.5
+          ],
+          "p1": [
+            203.5,
+            13.5
+          ],
+          "span": 70.5,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "bbox": [
+        233,
+        1,
+        250,
+        15
+      ],
+      "area_px": 146,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 62,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            236.5,
+            1.5
+          ],
+          "p1": [
+            236.5,
+            1.5
+          ],
+          "span": 71.1,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "bbox": [
+        259,
+        1,
+        279,
+        15
+      ],
+      "area_px": 196,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 78,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            279.5,
+            13.5
+          ],
+          "p1": [
+            279.5,
+            13.5
+          ],
+          "n_points": 79,
+          "arc_err": 6.212
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "bbox": [
+        289,
+        1,
+        310,
+        15
+      ],
+      "area_px": 201,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 61,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            289.5,
+            14.5
+          ],
+          "p1": [
+            289.5,
+            14.5
+          ],
+          "span": 68.9,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "bbox": [
+        369,
+        1,
+        451,
+        7
+      ],
+      "area_px": 544,
+      "paint": {
+        "kind": "linear",
+        "direction": [
+          -0.0027,
+          -1.0
+        ],
+        "residual": 2.73
+      },
+      "n_contour_points": 165,
+      "n_corners": 2,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [
+          {
+            "angle_deg": 0.0,
+            "count": 2,
+            "total_length": 130.0
+          }
+        ],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "line",
+          "p0": [
+            448.5,
+            7.5
+          ],
+          "p1": [
+            372.5,
+            7.5
+          ],
+          "max_err": 0.0
+        },
+        {
+          "kind": "corner",
+          "p0": [
+            372.5,
+            7.5
+          ],
+          "p1": [
+            374.5,
+            1.5
+          ],
+          "span": 11.1,
+          "arc_radius": 2.89
+        },
+        {
+          "kind": "line",
+          "p0": [
+            374.5,
+            1.5
+          ],
+          "p1": [
+            428.5,
+            1.5
+          ],
+          "max_err": 0.0
+        },
+        {
+          "kind": "corner",
+          "p0": [
+            428.5,
+            1.5
+          ],
+          "p1": [
+            448.5,
+            7.5
+          ],
+          "span": 30.1,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "bbox": [
+        402,
+        80,
+        848,
+        522
+      ],
+      "area_px": 106601,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 1533,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [
+          {
+            "angle_deg": 0.0,
+            "count": 1,
+            "total_length": 71.0
+          }
+        ],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "line",
+          "p0": [
+            721.5,
+            521.5
+          ],
+          "p1": [
+            650.5,
+            521.5
+          ],
+          "max_err": 0.0
+        },
+        {
+          "kind": "curve",
+          "p0": [
+            650.5,
+            521.5
+          ],
+          "p1": [
+            721.5,
+            521.5
+          ],
+          "n_points": 1463,
+          "arc_err": 129.953
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "bbox": [
+        153,
+        305,
+        611,
+        749
+      ],
+      "area_px": 107511,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 1518,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [
+          {
+            "angle_deg": 0.0,
+            "count": 1,
+            "total_length": 97.0
+          }
+        ],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "line",
+          "p0": [
+            250.5,
+            307.5
+          ],
+          "p1": [
+            347.5,
+            307.5
+          ],
+          "max_err": 0.0
+        },
+        {
+          "kind": "curve",
+          "p0": [
+            347.5,
+            307.5
+          ],
+          "p1": [
+            250.5,
+            307.5
+          ],
+          "n_points": 1422,
+          "arc_err": 134.135
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "bbox": [
+        63,
+        852,
+        79,
+        875
+      ],
+      "area_px": 303,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 77,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            66.5,
+            852.5
+          ],
+          "p1": [
+            66.5,
+            852.5
+          ],
+          "n_points": 78,
+          "arc_err": 5.019
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "bbox": [
+        167,
+        852,
+        183,
+        875
+      ],
+      "area_px": 189,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 66,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            174.5,
+            875.5
+          ],
+          "p1": [
+            174.5,
+            875.5
+          ],
+          "span": 71.0,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "bbox": [
+        194,
+        852,
+        212,
+        875
+      ],
+      "area_px": 168,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 68,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            201.5,
+            875.5
+          ],
+          "p1": [
+            201.5,
+            875.5
+          ],
+          "n_points": 69,
+          "arc_err": 5.283
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "bbox": [
+        239,
+        852,
+        255,
+        875
+      ],
+      "area_px": 237,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 92,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            255.5,
+            852.5
+          ],
+          "p1": [
+            255.5,
+            852.5
+          ],
+          "n_points": 93,
+          "arc_err": 7.259
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "bbox": [
+        264,
+        852,
+        288,
+        876
+      ],
+      "area_px": 476,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 68,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "arc",
+          "centre": [
+            276.72,
+            864.47
+          ],
+          "radius": 11.88,
+          "angle_first": -72.5,
+          "angle_last": -72.5,
+          "p0": [
+            280.5,
+            852.5
+          ],
+          "p1": [
+            280.5,
+            852.5
+          ],
+          "max_err": 0.895
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "bbox": [
+        322,
+        852,
+        345,
+        876
+      ],
+      "area_px": 468,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 68,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "arc",
+          "centre": [
+            333.94,
+            864.51
+          ],
+          "radius": 11.76,
+          "angle_first": -73.5,
+          "angle_last": -73.5,
+          "p0": [
+            337.5,
+            852.5
+          ],
+          "p1": [
+            337.5,
+            852.5
+          ],
+          "max_err": 1.133
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "bbox": [
+        355,
+        852,
+        372,
+        875
+      ],
+      "area_px": 322,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 78,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            358.5,
+            852.5
+          ],
+          "p1": [
+            358.5,
+            852.5
+          ],
+          "n_points": 79,
+          "arc_err": 4.873
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "bbox": [
+        383,
+        852,
+        400,
+        875
+      ],
+      "area_px": 189,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 70,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            389.5,
+            875.5
+          ],
+          "p1": [
+            389.5,
+            875.5
+          ],
+          "n_points": 71,
+          "arc_err": 4.925
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "bbox": [
+        411,
+        852,
+        427,
+        876
+      ],
+      "area_px": 232,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 94,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            415.5,
+            852.5
+          ],
+          "p1": [
+            415.5,
+            852.5
+          ],
+          "n_points": 95,
+          "arc_err": 7.235
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "bbox": [
+        436,
+        852,
+        453,
+        875
+      ],
+      "area_px": 176,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 70,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            445.5,
+            875.5
+          ],
+          "p1": [
+            445.5,
+            875.5
+          ],
+          "span": 74.1,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "bbox": [
+        463,
+        852,
+        481,
+        875
+      ],
+      "area_px": 178,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 70,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            474.5,
+            875.5
+          ],
+          "p1": [
+            474.5,
+            875.5
+          ],
+          "n_points": 71,
+          "arc_err": 5.239
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "bbox": [
+        491,
+        852,
+        511,
+        875
+      ],
+      "area_px": 241,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 100,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            508.5,
+            875.5
+          ],
+          "p1": [
+            508.5,
+            875.5
+          ],
+          "n_points": 101,
+          "arc_err": 3.11
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "bbox": [
+        522,
+        852,
+        539,
+        875
+      ],
+      "area_px": 218,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 88,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            525.5,
+            852.5
+          ],
+          "p1": [
+            525.5,
+            852.5
+          ],
+          "n_points": 89,
+          "arc_err": 7.852
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "bbox": [
+        580,
+        852,
+        595,
+        875
+      ],
+      "area_px": 261,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 98,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            594.5,
+            852.5
+          ],
+          "p1": [
+            594.5,
+            852.5
+          ],
+          "n_points": 99,
+          "arc_err": 7.403
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "bbox": [
+        1,
+        853,
+        19,
+        875
+      ],
+      "area_px": 210,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 81,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            1.5,
+            875.5
+          ],
+          "p1": [
+            1.5,
+            875.5
+          ],
+          "n_points": 82,
+          "arc_err": 5.768
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "bbox": [
+        19,
+        853,
+        23,
+        863
+      ],
+      "area_px": 50,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 25,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            23.5,
+            853.5
+          ],
+          "p1": [
+            23.5,
+            853.5
+          ],
+          "span": 26.2,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "bbox": [
+        32,
+        853,
+        52,
+        875
+      ],
+      "area_px": 252,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 66,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            42.5,
+            853.5
+          ],
+          "p1": [
+            42.5,
+            853.5
+          ],
+          "n_points": 67,
+          "arc_err": 4.341
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "bbox": [
+        91,
+        853,
+        95,
+        875
+      ],
+      "area_px": 108,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 47,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {
+          "mirror_y": {
+            "centre": [
+              93.0,
+              864.0
+            ],
+            "iou": 0.9817
+          }
+        },
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": "mirror-symmetric top-bottom about (93.0, 864.0). Use the symmetry to remove parameters from whatever you fit."
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            94.5,
+            875.5
+          ],
+          "p1": [
+            94.5,
+            875.5
+          ],
+          "span": 49.1,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "bbox": [
+        106,
+        853,
+        126,
+        874
+      ],
+      "area_px": 243,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 63,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            117.5,
+            853.5
+          ],
+          "p1": [
+            117.5,
+            853.5
+          ],
+          "span": 73.4,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "bbox": [
+        136,
+        853,
+        156,
+        875
+      ],
+      "area_px": 279,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 102,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            137.5,
+            875.5
+          ],
+          "p1": [
+            137.5,
+            875.5
+          ],
+          "n_points": 103,
+          "arc_err": 7.466
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "bbox": [
+        299,
+        853,
+        312,
+        876
+      ],
+      "area_px": 145,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 62,
+      "n_corners": 1,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "corner",
+          "p0": [
+            300.5,
+            853.5
+          ],
+          "p1": [
+            300.5,
+            853.5
+          ],
+          "span": 66.1,
+          "arc_radius": null
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "bbox": [
+        549,
+        853,
+        570,
+        875
+      ],
+      "area_px": 322,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 100,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "curve",
+          "p0": [
+            551.5,
+            853.5
+          ],
+          "p1": [
+            551.5,
+            853.5
+          ],
+          "n_points": 101,
+          "arc_err": 8.75
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "bbox": [
+        661,
+        863,
+        741,
+        867
+      ],
+      "area_px": 324,
+      "paint": {
+        "kind": "complex",
+        "note": "not flat/linear/angular; needs judgment"
+      },
+      "n_contour_points": 162,
+      "n_corners": 0,
+      "structure": {
+        "symmetry": {},
+        "edge_directions": [
+          {
+            "angle_deg": 0.0,
+            "count": 1,
+            "total_length": 76.0
+          }
+        ],
+        "repeated_spacings": [],
+        "crossing_corners": [],
+        "hint": null
+      },
+      "segments": [
+        {
+          "kind": "line",
+          "p0": [
+            739.5,
+            867.5
+          ],
+          "p1": [
+            663.5,
+            867.5
+          ],
+          "max_err": 0.0
+        },
+        {
+          "kind": "curve",
+          "p0": [
+            663.5,
+            867.5
+          ],
+          "p1": [
+            739.5,
+            867.5
+          ],
+          "n_points": 87,
+          "arc_err": 2.347
+        }
+      ]
+    }
+  ]
+}

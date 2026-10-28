@@ -94,6 +94,10 @@ export function ChurchForm() {
           </optgroup>
         </select>
       </label>
+      <label className="grid gap-1 text-sm font-medium">
+        Website
+        <input name="website" className="h-11 rounded-xl border border-line px-3" placeholder="https://kosciol.pl" />
+      </label>
       {slug === otherDenomination ? (
         <label className="grid gap-1 text-sm font-medium">
           Official name of the church body

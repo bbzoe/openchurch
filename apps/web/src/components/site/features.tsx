@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
 import { AudioLines, BookOpen, Calendar, HandHeart, Languages, Video, type LucideIcon } from "lucide-react";
+import { LiveViews } from "@/components/site/live-views";
 
 const plan = [
   ["10:00", "Welcome", "Host"],
@@ -137,28 +137,7 @@ export function Features() {
             title="Live stream and multiple views"
             text="Switch between slides, camera and stream. One timeline for the room and for people online."
           >
-            <div className="relative overflow-hidden rounded-2xl">
-              <Image
-                src="/landing/live-stage-1600.webp"
-                alt="Illustrative stage view used as a preview of slides, camera and stream. Not an OpenChurch event."
-                width={1600}
-                height={900}
-                sizes="(min-width: 1280px) 360px, (min-width: 768px) 45vw, 90vw"
-                className="aspect-video h-auto w-full object-cover"
-              />
-              <div className="absolute bottom-3 left-3 flex gap-1.5">
-                {["Slides", "Camera", "Stream"].map((view, index) => (
-                  <span
-                    key={view}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold ${
-                      index === 0 ? "bg-white text-ink" : "bg-black/45 text-white"
-                    }`}
-                  >
-                    {view}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <LiveViews />
           </Card>
 
           <Card

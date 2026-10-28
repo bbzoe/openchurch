@@ -16,11 +16,11 @@ export function Stage() {
           <img
             src="/landing/live-stage-1600.webp"
             alt="Illustrative view from a congregation toward a lit stage. Not an OpenChurch event."
-            width={1600}
-            height={900}
+            width={1024}
+            height={682}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-[center_40%] sm:object-[64%_42%]"
+            className="absolute inset-0 h-full w-full object-cover object-[center_42%]"
           />
         </picture>
         <div

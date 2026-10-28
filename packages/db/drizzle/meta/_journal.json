@@ -22,6 +22,20 @@
       "when": 1792873601707,
       "tag": "0002_people_and_plan",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793176079417,
+      "tag": "0003_song_sections",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793194258589,
+      "tag": "0004_slides",
+      "breakpoints": true
     }
   ]
 }

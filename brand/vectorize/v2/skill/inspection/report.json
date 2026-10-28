@@ -1,0 +1,171 @@
+{
+  "summary": {
+    "target": "general",
+    "view_box": [
+      0.0,
+      0.0,
+      960.0,
+      960.0
+    ],
+    "shapes": 5,
+    "path_anchors": 31,
+    "native_primitives": 0,
+    "colors": {
+      "url(#earth-base)": 1,
+      "url(#earth-fold)": 1,
+      "url(#heaven-base)": 1,
+      "url(#heaven-crease)": 1,
+      "url(#heaven-fold)": 1
+    },
+    "findings": {
+      "error": 0,
+      "warn": 6,
+      "info": 0
+    }
+  },
+  "elements": [
+    {
+      "id": "heaven",
+      "tag": "path",
+      "fill": "url(#heaven-base)",
+      "stroke": null,
+      "anchors": 9,
+      "native_primitive": false,
+      "segments": {
+        "L": 2,
+        "A": 1,
+        "C": 6
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        336.7,
+        18.03,
+        958.46,
+        629.56
+      ],
+      "via_use": false
+    },
+    {
+      "id": "heaven-fold-layer",
+      "tag": "path",
+      "fill": "url(#heaven-fold)",
+      "stroke": null,
+      "anchors": 4,
+      "native_primitive": false,
+      "segments": {
+        "L": 4
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        548.31,
+        0.0,
+        960.0,
+        960.0
+      ],
+      "via_use": false
+    },
+    {
+      "id": "heaven-crease-layer",
+      "tag": "path",
+      "fill": "url(#heaven-crease)",
+      "stroke": null,
+      "anchors": 4,
+      "native_primitive": false,
+      "segments": {
+        "L": 4
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        778.61,
+        0.0,
+        960.0,
+        960.0
+      ],
+      "via_use": false
+    },
+    {
+      "id": "earth",
+      "tag": "path",
+      "fill": "url(#earth-base)",
+      "stroke": null,
+      "anchors": 9,
+      "native_primitive": false,
+      "segments": {
+        "L": 2,
+        "A": 1,
+        "C": 6
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        1.54,
+        330.44,
+        623.3,
+        941.97
+      ],
+      "via_use": false
+    },
+    {
+      "id": "earth-fold-layer",
+      "tag": "path",
+      "fill": "url(#earth-fold)",
+      "stroke": null,
+      "anchors": 5,
+      "native_primitive": false,
+      "segments": {
+        "L": 4,
+        "C": 1
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        293.5,
+        430.4,
+        1100.0,
+        1100.0
+      ],
+      "via_use": false
+    }
+  ],
+  "findings": [
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "heaven-base",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "heaven-fold",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "heaven-crease",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "earth-base",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "earth-fold",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "clip-mask-filter",
+      "element": null,
+      "message": "Clipping paths, masks or filters are used; they can break cutting, embroidery and some converters. Prefer expanded geometry."
+    }
+  ]
+}

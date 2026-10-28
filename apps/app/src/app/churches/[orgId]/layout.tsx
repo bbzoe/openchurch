@@ -23,6 +23,7 @@ export default async function ChurchLayout({
       orgId={orgId}
       churchName={current.name}
       city={current.city}
+      website={current.website}
       churches={churches}
       userName={user.name}
       userImage={user.image}

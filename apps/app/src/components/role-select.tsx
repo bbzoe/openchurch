@@ -16,7 +16,7 @@ export function RoleSelect({
         defaultValue={roleId}
         aria-label="Role"
         onChange={(event) => event.currentTarget.form?.requestSubmit()}
-        className="h-10 w-full rounded-xl border border-line bg-white px-3 text-sm"
+        className="h-10 w-full rounded-lg border border-input bg-ivory px-3 text-sm"
       >
         {roles.map((role) => (
           <option key={role.id} value={role.id}>

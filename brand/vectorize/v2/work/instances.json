@@ -1,0 +1,42 @@
+{
+  "wersja-jasna": {
+    "iou": 0.9721,
+    "scale": 0.1823,
+    "mask_px": 13512
+  },
+  "wersja-ciemna": {
+    "iou": 0.7597,
+    "scale": 0.18,
+    "mask_px": 10366
+  },
+  "podstawowy": {
+    "iou": 0.9372,
+    "scale": 0.0688,
+    "mask_px": 1978
+  },
+  "na-jasnym": {
+    "iou": 0.9319,
+    "scale": 0.0701,
+    "mask_px": 1985
+  },
+  "mono": {
+    "iou": 0.9256,
+    "scale": 0.0699,
+    "mask_px": 2001
+  },
+  "negatyw": {
+    "iou": 0.6909,
+    "scale": 0.1691,
+    "mask_px": 6210
+  },
+  "app-1024": {
+    "iou": 0.9014,
+    "scale": 0.0533,
+    "mask_px": 1158
+  },
+  "pole-ochronne": {
+    "iou": 0.9269,
+    "scale": 0.0695,
+    "mask_px": 2050
+  }
+}

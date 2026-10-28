@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "source": {
+    "path": "source/light_crop_big.png",
+    "width": 960,
+    "height": 880,
+    "sha256": "acb996eadc67ecd0a6fc92b008102e26858ee4394526d09643f6c7d93271ff1f",
+    "background": [
+      249,
+      250,
+      245,
+      255
+    ]
+  },
+  "model": {
+    "viewBox": [
+      0,
+      0,
+      960,
+      880
+    ],
+    "shapes": []
+  },
+  "notes": [
+    "renderer: resvg-py 0.5.0"
+  ]
+}

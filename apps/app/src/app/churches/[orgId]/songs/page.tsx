@@ -1,10 +1,9 @@
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { getSessionUser } from "@/lib/session";
 import { hasCapability } from "@/server/access";
-import { createSong } from "@/server/actions";
 import { getChurch, getMembership, listSongs } from "@/server/queries";
 
 export default async function SongsPage({
@@ -25,56 +24,46 @@ export default async function SongsPage({
   const { error } = await searchParams;
 
   return (
-    <>
-      <main className="mx-auto max-w-2xl px-6 py-10">
-        <section>
-          <h1 className="text-3xl font-bold tracking-tight">Songs</h1>
-          {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
-          {songs.length === 0 ? (
-            <p className="mt-6 rounded-[22px] border border-line bg-white p-6 text-sm text-body">No songs yet.</p>
-          ) : (
-            <ul className="mt-8 divide-y divide-line border-y border-line">
-              {songs.map((item) => (
-                <li key={item.id} className="py-4">
-                  <p className="font-semibold">{item.title}</p>
-                  <p className="text-sm text-body">
-                    {item.arrangement?.name ?? "No arrangement"}
-                    {item.arrangement?.key ? `, key of ${item.arrangement.key}` : ""}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
+    <main className="mx-auto flex max-w-3xl flex-col gap-6 px-4 py-8 sm:px-6">
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="text-2xl font-semibold tracking-tight">Songs</h1>
         {canEdit ? (
-          <form action={createSong.bind(null, orgId)} className="mt-10 grid gap-3">
-            <h2 className="text-lg font-semibold">Add a song</h2>
-            <label className="grid gap-1 text-sm font-medium">
-              Title
-              <Input name="title" required className="h-11" />
-            </label>
-            <label className="grid gap-1 text-sm font-medium">
-              Arrangement
-              <Input name="arrangement" placeholder="Default" className="h-11" />
-            </label>
-            <label className="grid gap-1 text-sm font-medium">
-              Key
-              <Input name="key" placeholder="G" className="h-11" />
-            </label>
-            <label className="grid gap-1 text-sm font-medium">
-              Lyrics
-              <Textarea name="lyrics" rows={5} />
-            </label>
-            <label className="grid gap-1 text-sm font-medium">
-              Chords
-              <Textarea name="chords" rows={4} className="font-mono" />
-            </label>
-            <Button className="h-11 w-fit rounded-full px-5 font-semibold">Save song</Button>
-          </form>
-        ) : (
-          <p className="text-sm text-body">You can read the library. Adding songs needs the songs permission.</p>
-        )}
-      </main>
-    </>
+          <Button asChild className="h-10 px-4">
+            <Link href={`/churches/${orgId}/songs/new`}>Add a song</Link>
+          </Button>
+        ) : null}
+      </div>
+      {error ? <p className="text-sm text-destructive">{error}</p> : null}
+      {songs.length === 0 ? (
+        <p className="rounded-2xl bg-card px-4 py-8 text-center text-sm text-muted-foreground">No songs yet.</p>
+      ) : (
+        <ul className="grid gap-2">
+          {songs.map((item) => {
+            const key = item.defaultKey || item.arrangements.find((arrangement) => arrangement.key)?.key;
+            return (
+              <li key={item.id}>
+                <Link href={`/churches/${orgId}/songs/${item.id}`} className="block rounded-2xl bg-card px-4 py-3">
+                  <p className="font-medium">
+                    {item.songbookNumber ? `${item.songbookNumber}. ` : ""}
+                    {item.title}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {item.sections.map((section) => section.label).join(" · ") || "No sections"}
+                    {key ? (
+                      <Badge variant="secondary" className="ml-2">
+                        {key}
+                      </Badge>
+                    ) : null}
+                  </p>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {canEdit ? null : (
+        <p className="text-sm text-body">You can read the library. Adding songs needs the songs permission.</p>
+      )}
+    </main>
   );
 }

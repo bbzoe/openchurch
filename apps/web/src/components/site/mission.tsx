@@ -1,18 +1,13 @@
-import Image from "next/image";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Button } from "@/components/ui/button";
 import { GithubMark } from "@/components/site/icon";
+import { BotanicalScatter } from "@/components/brand/leaves";
 import { site } from "@/lib/site";
 
 export function Mission() {
   return (
     <section className="relative isolate overflow-hidden bg-forest-950" aria-labelledby="mission-heading">
-      <Image
-        src="/landing/footer-botanical-dark.png"
-        alt=""
-        fill
-        sizes="100vw"
-        className="pointer-events-none object-cover"
-      />
+      <BotanicalScatter />
       <div className="oc-wrap relative px-6 py-20 text-center text-canvas sm:py-24">
         <p className="text-[11px] font-semibold tracking-[0.18em] text-leaf uppercase">
           Built for a greater purpose
@@ -28,7 +23,9 @@ export function Mission() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button asChild className="h-11 rounded-full px-5 text-sm font-semibold hover:bg-forest">
-            <a href={site.earlyAccess}>Join early access</a>
+            <TrackedLink href={site.earlyAccess} leadType="early_access" location="mission">
+              Join early access
+            </TrackedLink>
           </Button>
           <Button
             asChild

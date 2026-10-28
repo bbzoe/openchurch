@@ -1,4 +1,5 @@
-import { boolean, integer, pgEnum, pgTable, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+import { boolean, index, integer, jsonb, pgEnum, pgTable, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
 
 export const membershipRole = pgEnum("membership_role", [
   "sympathizer",
@@ -23,6 +24,20 @@ export const blockKind = pgEnum("block_kind", [
 ]);
 
 export const materialKind = pgEnum("material_kind", ["song", "scripture", "note"]);
+
+export const sectionType = pgEnum("section_type", [
+  "verse",
+  "chorus",
+  "bridge",
+  "tag",
+  "intro",
+  "ending",
+  "other",
+]);
+
+export const slideMode = pgEnum("slide_mode", ["section", "lines"]);
+
+export const deckItemKind = pgEnum("deck_item_kind", ["slide", "group"]);
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -81,6 +96,7 @@ export const organization = pgTable("organization", {
   city: text("city").notNull(),
   denominationSlug: text("denomination_slug").notNull(),
   denominationName: text("denomination_name").notNull(),
+  website: text("website"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -125,8 +141,38 @@ export const song = pgTable("song", {
     .notNull()
     .references(() => organization.id, { onDelete: "cascade" }),
   title: text("title").notNull(),
+  songbookNumber: text("songbook_number"),
+  defaultKey: text("default_key"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+export const songSection = pgTable(
+  "song_section",
+  {
+    id: text("id").primaryKey(),
+    songId: text("song_id")
+      .notNull()
+      .references(() => song.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    type: sectionType("type").notNull(),
+    label: text("label").notNull(),
+  },
+  (table) => [index("song_section_song_idx").on(table.songId)],
+);
+
+export const songLine = pgTable(
+  "song_line",
+  {
+    id: text("id").primaryKey(),
+    sectionId: text("section_id")
+      .notNull()
+      .references(() => songSection.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    text: text("text").notNull().default(""),
+    chords: jsonb("chords").$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+  },
+  (table) => [index("song_line_section_idx").on(table.sectionId)],
+);
 
 export const arrangement = pgTable("arrangement", {
   id: text("id").primaryKey(),
@@ -135,8 +181,11 @@ export const arrangement = pgTable("arrangement", {
     .references(() => song.id, { onDelete: "cascade" }),
   name: text("name").notNull(),
   key: text("key"),
-  lyrics: text("lyrics").notNull().default(""),
-  chords: text("chords").notNull().default(""),
+  position: integer("position").notNull().default(0),
+  sequence: jsonb("sequence").$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+  slideMode: slideMode("slide_mode").notNull().default("lines"),
+  linesPerSlide: integer("lines_per_slide").notNull().default(2),
+  breaks: jsonb("breaks").$type<{ sectionId: string; afterLine: number }[]>().notNull().default(sql`'[]'::jsonb`),
 });
 
 export const event = pgTable("event", {
@@ -149,6 +198,7 @@ export const event = pgTable("event", {
   kind: eventKind("kind").notNull(),
   status: eventStatus("status").notNull().default("draft"),
   liveBlockId: text("live_block_id"),
+  advance: text("advance").notNull().default("manual"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -168,7 +218,8 @@ export const person = pgTable("person", {
     .references(() => organization.id, { onDelete: "cascade" }),
   firstName: text("first_name").notNull(),
   lastName: text("last_name").notNull(),
-  email: text("email").notNull(),
+  email: text("email"),
+  image: text("image"),
   roleId: text("role_id")
     .notNull()
     .references(() => churchRole.id, { onDelete: "restrict" }),
@@ -185,6 +236,7 @@ export const block = pgTable("block", {
   title: text("title").notNull(),
   description: text("description").notNull().default(""),
   durationMinutes: integer("duration_minutes"),
+  leaderCount: integer("leader_count").notNull().default(1),
   assigneeMembershipId: text("assignee_membership_id").references(() => membership.id, {
     onDelete: "set null",
   }),
@@ -200,6 +252,7 @@ export const blockPerson = pgTable(
     personId: text("person_id")
       .notNull()
       .references(() => person.id, { onDelete: "cascade" }),
+    position: integer("position").notNull().default(0),
   },
   (table) => [uniqueIndex("block_person_unique").on(table.blockId, table.personId)],
 );
@@ -216,3 +269,39 @@ export const blockMaterial = pgTable("block_material", {
   songId: text("song_id").references(() => song.id, { onDelete: "set null" }),
   arrangementId: text("arrangement_id").references(() => arrangement.id, { onDelete: "set null" }),
 });
+
+export const deckItem = pgTable(
+  "deck_item",
+  {
+    id: text("id").primaryKey(),
+    blockId: text("block_id")
+      .notNull()
+      .references(() => block.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    kind: deckItemKind("kind").notNull(),
+    title: text("title").notNull().default(""),
+    songId: text("song_id").references(() => song.id, { onDelete: "set null" }),
+    arrangementId: text("arrangement_id").references(() => arrangement.id, { onDelete: "set null" }),
+  },
+  (table) => [index("deck_item_block_idx").on(table.blockId)],
+);
+
+export const slide = pgTable(
+  "slide",
+  {
+    id: text("id").primaryKey(),
+    deckItemId: text("deck_item_id")
+      .notNull()
+      .references(() => deckItem.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    label: text("label").notNull().default(""),
+    sectionType: sectionType("section_type"),
+    sectionId: text("section_id").notNull().default(""),
+    occurrence: integer("occurrence").notNull().default(0),
+    background: text("background").notNull().default("forest"),
+    font: text("font").notNull().default("sans"),
+    color: text("color").notNull().default(""),
+    lines: jsonb("lines").$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+  },
+  (table) => [index("slide_deck_item_idx").on(table.deckItemId)],
+);

@@ -1,7 +1,11 @@
 import { notFound, redirect } from "next/navigation";
 import { LiveRefresh } from "@/components/live-refresh";
+import { SlideShow } from "@/components/slide-show";
+import { SongSlides } from "@/components/song-slides";
+import { buildSlides } from "@/lib/song-text";
+import { currentSlotId } from "@/lib/run-of-show";
 import { getSessionUser } from "@/lib/session";
-import { getChurch, getEvent, getLivePayload, getMembership } from "@/server/queries";
+import { getChurch, getDeck, getEvent, getLivePayload, getMembership } from "@/server/queries";
 
 export default async function LivePage({
   params,
@@ -25,7 +29,20 @@ export default async function LivePage({
   }
 
   const payload = await getLivePayload(eventId);
-  const live = payload?.live ?? null;
+  const timed =
+    current.status === "live" && current.advance === "auto" && payload
+      ? currentSlotId(payload.blocks, current.startsAt, new Date())
+      : undefined;
+  const live = timed === undefined ? (payload?.live ?? null) : (payload?.blocks.find((item) => item.id === timed) ?? null);
+  const deck = current.status === "live" && live ? await getDeck(live.id) : [];
+  if (current.status === "live" && live && deck.length) {
+    return (
+      <>
+        <LiveRefresh />
+        <SlideShow key={live.id} deck={deck} eyebrow={live.title} />
+      </>
+    );
+  }
 
   return (
     <main className="min-h-full bg-forest px-6 py-10 text-ivory">
@@ -42,24 +59,23 @@ export default async function LivePage({
           {live.people.length ? (
             <p className="mt-2 text-lg text-leaf">{live.people.map((person) => `${person.firstName} ${person.lastName}`).join(", ")}</p>
           ) : null}
-          {live.description ? <p className="mt-6 text-2xl leading-relaxed">{live.description}</p> : null}
+          {live.description && live.description !== "openchurch:break" ? <p className="mt-6 text-2xl leading-relaxed">{live.description}</p> : null}
           <div className="mt-8 grid gap-8">
             {live.materials.map((material) => {
               const linked = payload?.songs.find((song) => song.id === material.songId);
               if (material.kind === "song") {
+                const chosen =
+                  linked?.arrangements.find((item) => item.id === material.arrangementId) ?? linked?.arrangements[0];
+                const slides = linked && chosen ? buildSlides(linked.sections, chosen) : [];
+                const firstSong = live.materials.find((item) => item.kind === "song");
                 return (
-                  <section key={material.id}>
-                    <h2 className="text-2xl font-semibold">{linked?.title ?? "Song"}</h2>
-                    {linked?.arrangement?.key ? <p className="mt-1 text-leaf">Key of {linked.arrangement.key}</p> : null}
-                    <pre className="mt-4 font-sans text-xl leading-relaxed whitespace-pre-wrap">
-                      {linked?.arrangement?.lyrics || "No lyrics yet."}
-                    </pre>
-                    {linked?.arrangement?.chords ? (
-                      <pre className="mt-4 font-mono text-base leading-relaxed whitespace-pre-wrap text-leaf">
-                        {linked.arrangement.chords}
-                      </pre>
-                    ) : null}
-                  </section>
+                  <SongSlides
+                    key={material.id}
+                    title={linked?.title ?? "Song"}
+                    songKey={chosen?.key || linked?.defaultKey || ""}
+                    slides={slides}
+                    autoFocus={material.id === firstSong?.id}
+                  />
                 );
               }
               if (material.kind === "scripture") {

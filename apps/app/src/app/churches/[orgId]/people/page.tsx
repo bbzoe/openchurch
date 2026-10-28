@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { TeamEditor } from "@/components/team-editor";
 import { getSessionUser } from "@/lib/session";
-import { ensureStarterRoles } from "@/server/actions";
+import { ensureSelfAsPerson, ensureStarterRoles } from "@/server/actions";
 import { getChurch, getMembership, listPeople, listRoles } from "@/server/queries";
 
 export default async function PeoplePage({
@@ -18,13 +18,14 @@ export default async function PeoplePage({
   const church = await getChurch(orgId);
   if (!membership || !church) notFound();
   await ensureStarterRoles(orgId);
+  await ensureSelfAsPerson(orgId);
   const roles = await listRoles(orgId);
   const people = await listPeople(orgId);
   const { error } = await searchParams;
 
   return (
     <>
-      <main className="mx-auto max-w-5xl px-4 py-8">
+      <main className="min-h-svh w-full px-6 py-6">
         <TeamEditor orgId={orgId} roles={roles} people={people} error={error} mode="people" />
       </main>
     </>

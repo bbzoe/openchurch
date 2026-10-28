@@ -1,0 +1,206 @@
+{
+  "summary": {
+    "target": "general",
+    "view_box": [
+      0.0,
+      0.0,
+      960.0,
+      960.0
+    ],
+    "shapes": 6,
+    "path_anchors": 29,
+    "native_primitives": 3,
+    "colors": {
+      "url(#e-base)": 1,
+      "url(#e-front)": 1,
+      "url(#e-shadow)": 1,
+      "url(#h-base)": 1,
+      "url(#h-crease)": 1,
+      "url(#h-front)": 1
+    },
+    "findings": {
+      "error": 0,
+      "warn": 9,
+      "info": 0
+    }
+  },
+  "elements": [
+    {
+      "id": "heaven",
+      "tag": "path",
+      "fill": "url(#h-base)",
+      "stroke": null,
+      "anchors": 12,
+      "native_primitive": false,
+      "segments": {
+        "C": 12
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        331.7,
+        13.37,
+        959.99,
+        629.77
+      ],
+      "via_use": false
+    },
+    {
+      "id": "h-front-layer",
+      "tag": "rect",
+      "fill": "url(#h-front)",
+      "stroke": null,
+      "anchors": null,
+      "native_primitive": true,
+      "segments": {
+        "L": 4
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        483.07,
+        0.0,
+        960.0,
+        960.0
+      ],
+      "via_use": false
+    },
+    {
+      "id": "h-crease-layer",
+      "tag": "rect",
+      "fill": "url(#h-crease)",
+      "stroke": null,
+      "anchors": null,
+      "native_primitive": true,
+      "segments": {
+        "L": 4
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        494.39,
+        0.0,
+        749.37,
+        960.0
+      ],
+      "via_use": false
+    },
+    {
+      "id": "earth",
+      "tag": "path",
+      "fill": "url(#e-base)",
+      "stroke": null,
+      "anchors": 12,
+      "native_primitive": false,
+      "segments": {
+        "C": 12
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        0.01,
+        330.23,
+        628.3,
+        946.63
+      ],
+      "via_use": false
+    },
+    {
+      "id": "e-shadow-layer",
+      "tag": "rect",
+      "fill": "url(#e-shadow)",
+      "stroke": null,
+      "anchors": null,
+      "native_primitive": true,
+      "segments": {
+        "L": 4
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        0.0,
+        0.0,
+        313.14,
+        960.0
+      ],
+      "via_use": false
+    },
+    {
+      "id": "e-front-layer",
+      "tag": "path",
+      "fill": "url(#e-front)",
+      "stroke": null,
+      "anchors": 5,
+      "native_primitive": false,
+      "segments": {
+        "L": 4,
+        "C": 1
+      },
+      "subpaths": 1,
+      "open_subpaths": 0,
+      "bbox": [
+        303.14,
+        75.92,
+        1853.12,
+        1500.0
+      ],
+      "via_use": false
+    }
+  ],
+  "findings": [
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "h-base",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "h-front",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "h-soft",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "h-crease",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "e-base",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "e-front",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "gradient",
+      "element": "e-shadow",
+      "message": "Gradient fill; confirm it reflects real color transition in the source."
+    },
+    {
+      "severity": "warn",
+      "check": "clip-mask-filter",
+      "element": null,
+      "message": "Clipping paths, masks or filters are used; they can break cutting, embroidery and some converters. Prefer expanded geometry."
+    },
+    {
+      "severity": "warn",
+      "check": "mostly-hidden",
+      "element": "earth",
+      "message": "Only 2% of it shows past the shapes above; likely a stacked copy or trace layer. Trim it to the visible part or delete it."
+    }
+  ]
+}

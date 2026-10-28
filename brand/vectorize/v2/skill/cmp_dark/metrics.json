@@ -1,0 +1,24 @@
+{
+  "source_size": [
+    260,
+    180
+  ],
+  "comparison_size": [
+    260,
+    180
+  ],
+  "crop_xywh": null,
+  "background_rgb": [
+    1,
+    27,
+    18
+  ],
+  "source_alpha_threshold": 128,
+  "rendered_alpha_threshold": 128,
+  "color_threshold": 20,
+  "mean_absolute_rgb_error_on_white_0_to_255": 8.348183760683762,
+  "mean_absolute_rgb_error_on_black_0_to_255": 8.348183760683762,
+  "silhouette_iou": 0.9646017699115044,
+  "missed_foreground_pixels": 381,
+  "added_foreground_pixels": 103
+}

@@ -50,13 +50,11 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"form">)
           <Input id="email" name="email" type="email" autoComplete="email" placeholder="m@example.com" required className="bg-background" />
         </Field>
         <Field>
-          <div className="flex items-center">
-            <FieldLabel htmlFor="password">Password</FieldLabel>
-            <Link href="/forgot-password" className="ml-auto text-sm underline-offset-4 hover:underline">
-              Forgot password?
-            </Link>
-          </div>
+          <FieldLabel htmlFor="password">Password</FieldLabel>
           <Input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} className="bg-background" />
+          <Link href="/forgot-password" className="w-fit! text-sm underline underline-offset-4">
+            Forgot password?
+          </Link>
         </Field>
         <Field orientation="horizontal">
           <input id="remember" name="remember" type="checkbox" defaultChecked className="size-4 accent-action" />

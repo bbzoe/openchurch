@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/site/icon";
 import { site } from "@/lib/site";
@@ -44,10 +45,10 @@ export function Hero() {
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
             <Button asChild className="h-11 rounded-full px-5 text-sm font-semibold hover:bg-forest">
-              <a href={site.earlyAccess}>
+              <TrackedLink href={site.earlyAccess} leadType="early_access" location="hero">
                 Join early access
                 <Icon name="arrow" className="size-4" />
-              </a>
+              </TrackedLink>
             </Button>
             <a href="#features" className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest">
               Explore the platform

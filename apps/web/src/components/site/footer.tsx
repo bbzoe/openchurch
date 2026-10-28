@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { CookieSettingsButton } from "@/components/analytics/cookie-settings";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { site } from "@/lib/site";
 
 const columns = [
@@ -15,12 +17,15 @@ const columns = [
     title: "Resources",
     links: [
       { href: site.github, label: "GitHub" },
-      { href: site.earlyAccess, label: "Early access" },
+      { href: site.earlyAccess, label: "Early access", leadType: "early_access" as const, location: "footer" },
     ],
   },
   {
     title: "Legal",
-    links: [{ href: site.license, label: "MIT license" }],
+    links: [
+      { href: "/privacy", label: "Privacy" },
+      { href: site.license, label: "MIT license" },
+    ],
   },
   {
     title: "Stay updated",
@@ -51,17 +56,33 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {column.links.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-white/75 hover:text-white"
-                    {...(link.href.startsWith("http")
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                  >
-                    {link.label}
-                  </a>
+                  {"leadType" in link && link.leadType ? (
+                    <TrackedLink
+                      href={link.href}
+                      leadType={link.leadType}
+                      location={link.location}
+                      className="text-sm text-white/75 hover:text-white"
+                    >
+                      {link.label}
+                    </TrackedLink>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-sm text-white/75 hover:text-white"
+                      {...(link.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
+              {column.title === "Legal" ? (
+                <li>
+                  <CookieSettingsButton className="text-sm text-white/75 hover:text-white" />
+                </li>
+              ) : null}
             </ul>
           </nav>
         ))}

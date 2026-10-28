@@ -23,8 +23,12 @@
   --accent: #e7f8ee;
   --accent-foreground: var(--forest);
   --border: var(--line);
-  --input: var(--line);
+  --input: #c5d9ce;
   --ring: var(--action);
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--ink);
+  --sidebar-accent: #e7f8ee;
+  --sidebar-accent-foreground: var(--forest);
   --destructive: #b42318;
   --popover: #ffffff;
   --popover-foreground: var(--ink);
@@ -57,8 +61,22 @@
   --color-ivory: var(--ivory);
   --color-ink: var(--ink);
   --color-body: var(--body);
+  --color-line: var(--line);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --font-sans: var(--font-sans);
   --radius-lg: var(--radius);
+  --default-border-color: var(--border);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
 }
 
 body {
@@ -70,6 +88,13 @@ body {
   outline-offset: 3px;
 }
 
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none;
+}
+
 input,
 select,
 textarea {
@@ -79,4 +104,24 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   color: #8aa399;
+}
+
+@keyframes nav-progress {
+  0% {
+    transform: scaleX(0.08);
+  }
+  100% {
+    transform: scaleX(0.82);
+  }
+}
+
+.nav-progress-run {
+  transform-origin: left center;
+  animation: nav-progress 8s cubic-bezier(0.05, 0.7, 0.2, 1) forwards;
+}
+
+.nav-progress-done {
+  transform-origin: left center;
+  transform: scaleX(1);
+  transition: transform 160ms ease-out;
 }
