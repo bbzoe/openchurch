@@ -17,17 +17,13 @@ export function AuthCover({ children }: { children: ReactNode }) {
       </div>
       <div className="relative hidden bg-forest lg:block">
         <Image
-          src="/auth/fern.jpg"
-          alt="A green fern frond"
+          src="/auth/leaves.jpg"
+          alt=""
           fill
           priority
           sizes="50vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-forest/10 to-transparent" />
-        <p className="absolute right-4 bottom-4 left-4 text-xs text-ivory/80">
-          Blechnum gibbum. Photo by Forest and Kim Starr, CC BY 3.0 us.
-        </p>
       </div>
     </div>
   );

@@ -515,22 +515,50 @@ export function ServicePlan({
     if ((event.target as HTMLElement).closest("[data-remove-break]")) return;
     event.stopPropagation();
     const originX = event.clientX;
+    const originY = event.clientY;
     const origin = slot.durationMinutes ?? 1;
+    const id = slot.id;
+    let mode: "undecided" | "time" | "move" = "undecided";
+    let hover: { id: string; place: "before" | "after" } | null = null;
+    const minutesFrom = (clientX: number) => Math.min(45, Math.max(1, origin + Math.round((clientX - originX) / 14)));
     const onMove = (ev: PointerEvent) => {
-      const minutes = Math.min(45, Math.max(1, origin + Math.round((ev.clientX - originX) / 14)));
-      patch(slot.id, { durationMinutes: minutes });
+      const dx = ev.clientX - originX;
+      const dy = ev.clientY - originY;
+      if (mode === "undecided") {
+        if (Math.hypot(dx, dy) < 6) return;
+        mode = Math.abs(dy) > Math.abs(dx) ? "move" : "time";
+      }
+      if (mode === "time") {
+        patch(id, { durationMinutes: minutesFrom(ev.clientX) });
+        return;
+      }
+      if (id.startsWith("temp-")) return;
+      setDragId(id);
+      hover = rowAt(ev.clientY);
+      setOver(hover);
     };
     const onUp = (ev: PointerEvent) => {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
-      const minutes = Math.min(45, Math.max(1, origin + Math.round((ev.clientX - originX) / 14)));
-      patch(slot.id, { durationMinutes: minutes });
-      if (slot.id.startsWith("temp-") || minutes === origin) return;
+      if (mode === "move") {
+        setDragId(null);
+        setOver(null);
+        if (!hover) return;
+        const items = slotsRef.current;
+        const next = placeOrder(items, id, hover);
+        if (next === items) return;
+        void commitOrder(next);
+        return;
+      }
+      if (mode !== "time") return;
+      const minutes = minutesFrom(ev.clientX);
+      patch(id, { durationMinutes: minutes });
+      if (id.startsWith("temp-") || minutes === origin) return;
       const body = new FormData();
       body.set("title", "Break");
       body.set("description", BREAK);
       body.set("durationMinutes", String(minutes));
-      void updateSection(orgId, eventId, slot.id, body);
+      void updateSection(orgId, eventId, id, body);
     };
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
@@ -738,7 +766,7 @@ export function ServicePlan({
                   {lineBefore ? <DropMark /> : null}
                   <li data-row={slot.id} className="relative list-none scroll-mt-24">
                   <div
-                    className="group relative flex h-7 cursor-ew-resize items-center select-none"
+                    className={`group relative flex h-7 items-center select-none ${dragId === slot.id ? "cursor-grabbing opacity-60" : canPlan ? "cursor-grab active:cursor-grabbing" : ""}`}
                     onPointerDown={(event) => onBreakPointerDown(event, slot)}
                   >
                     <span className="h-px flex-1 bg-primary/25" />
@@ -751,7 +779,7 @@ export function ServicePlan({
                         type="button"
                         data-remove-break
                         aria-label="Remove break"
-                        className="absolute right-0 grid size-6 cursor-pointer place-items-center rounded-full text-muted-foreground opacity-0 hover:bg-card group-hover:opacity-100"
+                        className="ml-2 grid size-6 shrink-0 cursor-pointer place-items-center rounded-full bg-white text-muted-foreground shadow-sm ring-1 ring-primary/20 hover:text-foreground"
                         onPointerDown={(event) => event.stopPropagation()}
                         onClick={() => {
                           setSlots((current) => current.filter((item) => item.id !== slot.id));

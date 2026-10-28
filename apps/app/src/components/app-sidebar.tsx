@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, ChevronDown, ChevronsUpDown, Music, Users } from "lucide-react";
+import { CalendarDays, ChevronDown, ChevronsUpDown, Music, Presentation, Users } from "lucide-react";
 import { churchFavicon } from "@/lib/church-icon";
 import { signOut } from "@/server/actions";
 import {
@@ -46,7 +46,8 @@ export function AppSidebar({
 
   const home = `/churches/${orgId}`;
   const links = [
-    { href: home, label: "Events", icon: CalendarDays, active: path === home || path.includes("/events/") },
+    { href: home, label: "Events", icon: CalendarDays, active: (path === home || path.includes("/events/")) && !path.includes("/slides") },
+    { href: `${home}/slides`, label: "Slides", icon: Presentation, active: path.includes("/slides") },
     { href: `${home}/people`, label: "People", icon: Users, active: path.endsWith("/people") || path.endsWith("/setup") },
     { href: `${home}/songs`, label: "Songs", icon: Music, active: path.includes("/songs") },
   ];
